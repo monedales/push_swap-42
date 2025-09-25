@@ -5,7 +5,7 @@ AR = ar rcs
 RM = rm -rf
 INC = -I .
 CP = cp
-SRC = \
+SRC = utils_doubly_list.c utils_doubly_list2.c push_swap.c \
 
 
 OBJS = $(SRC:.c=.o)
