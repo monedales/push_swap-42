@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maria-ol <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mona <mona@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 16:24:16 by maria-ol          #+#    #+#             */
-/*   Updated: 2025/07/30 15:45:05 by maria-ol         ###   ########.fr       */
+/*   Updated: 2025/09/25 11:40:56 by mona             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,27 +23,6 @@ static void	free_arr(char **arr, size_t limit)
 		i++;
 	}
 	free(arr);
-}
-
-static size_t	count_words(const char *str, char delimit)
-{
-	size_t	word;
-	size_t	count;
-
-	word = 0;
-	count = 0;
-	while (str[count])
-	{
-		while (str[count] == delimit)
-			count++;
-		if (str[count])
-		{
-			word++;
-			while (str[count] != delimit && str[count])
-				count++;
-		}
-	}
-	return (word);
 }
 
 static char	*extract_word(const char *str, char chr, size_t *current)

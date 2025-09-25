@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maria-ol <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mona <mona@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 20:13:11 by maria-ol          #+#    #+#             */
-/*   Updated: 2025/09/16 14:16:46 by maria-ol         ###   ########.fr       */
+/*   Updated: 2025/09/25 11:37:10 by mona             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,10 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+long 	ft_atol(const char *str);
+void    ft_error(void);
+size_t	count_words(const char *str, char delimit);
+int		ft_isspace(int chr);
 
 //printf
 int		ft_printf(const char *format, ...);
