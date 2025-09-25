@@ -6,7 +6,7 @@
 /*   By: mona <mona@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 20:13:11 by maria-ol          #+#    #+#             */
-/*   Updated: 2025/09/25 11:37:10 by mona             ###   ########.fr       */
+/*   Updated: 2025/09/25 12:23:20 by mona             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ long 	ft_atol(const char *str);
 void    ft_error(void);
 size_t	count_words(const char *str, char delimit);
 int		ft_isspace(int chr);
+void	ft_free_arr(char **arr, size_t limit);
 
 //printf
 int		ft_printf(const char *format, ...);

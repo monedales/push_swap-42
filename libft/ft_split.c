@@ -6,25 +6,23 @@
 /*   By: mona <mona@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 16:24:16 by maria-ol          #+#    #+#             */
-/*   Updated: 2025/09/25 11:40:56 by mona             ###   ########.fr       */
+/*   Updated: 2025/09/25 12:38:53 by mona             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-static void	free_arr(char **arr, size_t limit)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < limit)
-	{
-		free(arr[i]);
-		i++;
-	}
-	free(arr);
-}
-
+/**
+ * @brief Extracts a single word from a string starting at a given position.
+ *
+ * Skips leading delimiters, then extracts characters until the next delimiter
+ * or end of string is found. Updates the current position pointer to the end
+ * of the extracted word. This is a helper function for ft_split.
+ *
+ * @param str The source string to extract from.
+ * @param chr The delimiter character to look for.
+ * @param current Pointer to the current position in the string, updated after extraction.
+ * @return A newly allocated string containing the extracted word, or NULL if no word found.
+ */
 static char	*extract_word(const char *str, char chr, size_t *current)
 {
 	size_t	start;
@@ -41,7 +39,18 @@ static char	*extract_word(const char *str, char chr, size_t *current)
 	*current = end;
 	return (ft_substr(str, start, end - start));
 }
-
+/**
+ * @brief Splits a string into an array of strings using a delimiter.
+ *
+ * Allocates and returns an array of strings obtained by splitting the input
+ * string using the specified delimiter. Each word becomes a separate string
+ * in the result array. The array is null-terminated. If memory allocation
+ * fails at any point, all previously allocated memory is freed.
+ *
+ * @param s The string to split.
+ * @param c The delimiter character used for splitting.
+ * @return An array of strings representing the split result, or NULL on failure.
+ */
 char	**ft_split(char const *s, char c)
 {
 	char	**arr;
