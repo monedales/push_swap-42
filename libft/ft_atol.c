@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mona <mona@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: maria-ol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 16:48:49 by mona              #+#    #+#             */
-/*   Updated: 2025/09/25 11:40:21 by mona             ###   ########.fr       */
+/*   Updated: 2025/09/25 18:16:44 by maria-ol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
  * @return An long value containing the converted 'str' or 0 on error.
  */
 
-long ft_atol(const char *str)
+long	ft_atol(const char *str)
 {
 	long	result;
 	int		count;

@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mona <mona@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: maria-ol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 12:10:04 by mona              #+#    #+#             */
-/*   Updated: 2025/09/25 12:33:53 by mona             ###   ########.fr       */
+/*   Updated: 2025/09/25 18:22:20 by maria-ol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 /**
- * @brief Frees all nodes in a doubly linked list and sets the head pointer to NULL.
+ * @brief Frees all nodes in a doubly linked list and sets the head pointer 
+ * to NULL.
  *
  * Traverses the entire list from head to tail, freeing each node's memory
  * and properly updating the head pointer. After execution, the stack pointer
@@ -28,7 +29,6 @@ void	free_stack(t_stack **stack)
 
 	if (!stack || !*stack)
 		return ;
-	
 	while (*stack)
 	{
 		temp = (*stack)->next;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mona <mona@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: maria-ol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 16:24:16 by maria-ol          #+#    #+#             */
-/*   Updated: 2025/09/25 13:02:58 by mona             ###   ########.fr       */
+/*   Updated: 2025/09/25 18:14:12 by maria-ol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,10 @@
  *
  * @param str The source string to extract from.
  * @param chr The delimiter character to look for.
- * @param current Pointer to the current position in the string, updated after extraction.
- * @return A newly allocated string containing the extracted word, or NULL if no word found.
+ * @param current Pointer to the current position in the string, updated after
+ * extraction.
+ * @return A newly allocated string containing the extracted word, or NULL if 
+ * no word found.
  */
 static char	*extract_word(const char *str, char chr, size_t *current)
 {
@@ -39,6 +41,7 @@ static char	*extract_word(const char *str, char chr, size_t *current)
 	*current = end;
 	return (ft_substr(str, start, end - start));
 }
+
 /**
  * @brief Splits a string into an array of strings using a delimiter.
  *

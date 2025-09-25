@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_doubly_list.c                                :+:      :+:    :+:   */
+/*   ft_utils_doubly_list.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mona <mona@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: maria-ol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 16:09:52 by maria-ol          #+#    #+#             */
-/*   Updated: 2025/09/24 17:53:58 by mona             ###   ########.fr       */
+/*   Updated: 2025/09/25 18:48:05 by maria-ol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
  * are initialized to NULL, making it ready to be inserted into a list.
  *
  * @param content The integer value to store in the new node.
- * @return A pointer to the newly created node, or NULL if memory allocation fails.
+ * @return A pointer to the newly created node, or NULL if mem allocation fails.
  */
 t_stack	*ft_create_node(int content)
 {
@@ -40,7 +40,8 @@ t_stack	*ft_create_node(int content)
  *
  * Traverses the list from the head to find the tail node by following
  * the 'next' pointers until reaching a node where next is NULL.
- * This function is useful for operations that need to access the end of the list.
+ * This function is useful for operations that need to access the end of the 
+ * list.
  *
  * @param head A pointer to the first node in the list.
  * @return A pointer to the last node in the list, or NULL if the list is empty.
@@ -50,7 +51,7 @@ t_stack	*ft_last_node(t_stack *head)
 	t_stack	*tail;
 
 	if (!head)
-        return (NULL); 
+		return (NULL);
 	tail = head;
 	while (tail->next)
 		tail = tail->next;
@@ -67,14 +68,15 @@ t_stack	*ft_last_node(t_stack *head)
  *
  * @param head A pointer to the pointer of the first node in the list.
  * @param node The node to be added at the end of the list.
- * @return A pointer to the head of the list, or the unchanged head if node is NULL.
+ * @return A pointer to the head of the list, or the unchanged head if node 
+ * is NULL.
  */
 t_stack	*ft_add_last(t_stack **head, t_stack *node)
 {
 	t_stack	*tail;
 
 	if (!node)
-		return (*head); // Added to handle NULL head
+		return (*head);
 	if (*head == NULL)
 		*head = node;
 	else
@@ -96,9 +98,10 @@ t_stack	*ft_add_last(t_stack **head, t_stack *node)
  *
  * @param head A pointer to the pointer of the first node in the list.
  * @param node The node to be added at the front of the list.
- * @return A pointer to the new head of the list, or the unchanged head if node is NULL.
+ * @return A pointer to the new head of the list, or the unchanged head if node 
+ * is NULL.
  */
-t_stack *ft_add_front(t_stack **head, t_stack *node)
+t_stack	*ft_add_front(t_stack **head, t_stack *node)
 {
 	if (!node)
 		return (*head);
@@ -107,7 +110,7 @@ t_stack *ft_add_front(t_stack **head, t_stack *node)
 	else
 	{
 		node->next = *head;
-		(*head)->prev = node; //higher precedence so we need parentheses
+		(*head)->prev = node;
 		*head = node;
 	}
 	return (*head);
@@ -127,7 +130,7 @@ ssize_t	ft_list_size(t_stack *head)
 {
 	ssize_t	len;
 	t_stack	*temp;
-	
+
 	if (!head)
 		return (0);
 	len = 0;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mona <mona@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: maria-ol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 17:33:10 by mona              #+#    #+#             */
-/*   Updated: 2025/09/25 12:53:17 by mona             ###   ########.fr       */
+/*   Updated: 2025/09/25 19:00:12 by maria-ol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,20 @@
 
 int main(int argc, char **argv)
 {
-    t_stack *stack_a;
-    t_stack *stack_b;
+	t_stack	*stack_a;
+	t_stack	*stack_b;
 
-    if (argc < 2)
-        return (0);
-    stack_a = //need to parse and validade all the inputs
-    if (!stack_a)
-        return (ft_error());
-    // check if stack a is already sorted
-    stack_b = NULL;
-    // Sort both stacks 
-    // sort_stacks(&stack_a, &stack_b);
-    
-    // Clean up
-    // free_stack(&stack_a);
-    return (0);
+	if (argc < 2)
+		return (0);
+	stack_a = //need to parse and validade all the inputs
+	if (!stack_a)
+		return (ft_error());
+	// check if stack a is already sorted
+	stack_b = NULL;
+	// Sort both stacks 
+	// sort_stacks(&stack_a, &stack_b);
+
+	// Clean up
+	// free_stack(&stack_a);
+	return (0);
 }

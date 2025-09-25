@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mona <mona@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: maria-ol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 17:39:04 by mona              #+#    #+#             */
-/*   Updated: 2025/09/25 13:02:08 by mona             ###   ########.fr       */
+/*   Updated: 2025/09/25 18:15:59 by maria-ol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void    ft_error(void)
+void	ft_error(void)
 {
-    write(2, "Error\n", 7);
-    exit(1);
+	write(2, "Error\n", 7);
+	exit(1);
 }
