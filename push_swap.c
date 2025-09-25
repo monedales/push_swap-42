@@ -6,30 +6,11 @@
 /*   By: mona <mona@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 17:33:10 by mona              #+#    #+#             */
-/*   Updated: 2025/09/24 20:15:54 by mona             ###   ########.fr       */
+/*   Updated: 2025/09/25 12:53:17 by mona             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-char    **get_all_numbers(int argc, char **argv)
-{
-    char **result;
-    char **split;
-    int total_numbers;
-    int count;
-    
-    count = 1;
-    total_numbers = 0;
-    while (count < argc)
-    {
-        if (ft_strchr(argv[count], " "))
-            // split = ft_split(argv[count], " ");
-            total_numbers = total_numbers + count_words(argv[count], " ");
-        else
-            total_numbers++;
-    }
-}
 
 int main(int argc, char **argv)
 {

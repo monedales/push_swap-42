@@ -6,7 +6,7 @@
 /*   By: mona <mona@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 16:24:16 by maria-ol          #+#    #+#             */
-/*   Updated: 2025/09/25 12:38:53 by mona             ###   ########.fr       */
+/*   Updated: 2025/09/25 13:02:58 by mona             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ char	**ft_split(char const *s, char c)
 		arr[count_w] = extract_word(s, c, &start);
 		if (!arr[count_w])
 		{
-			free_arr(arr, count_w);
+			ft_free_arr(arr, count_w);
 			return (NULL);
 		}
 		count_w++;

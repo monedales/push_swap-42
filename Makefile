@@ -5,7 +5,7 @@ AR = ar rcs
 RM = rm -rf
 INC = -I .
 CP = cp
-SRC = utils_doubly_list.c utils_doubly_list2.c push_swap.c \
+SRC = ft_utils_doubly_list.c ft_utils_doubly_list2.c push_swap.c ft_free.c ft_args_validation.c \
 
 
 OBJS = $(SRC:.c=.o)
