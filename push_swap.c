@@ -6,12 +6,24 @@
 /*   By: maria-ol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 17:33:10 by mona              #+#    #+#             */
-/*   Updated: 2025/09/26 15:38:43 by maria-ol         ###   ########.fr       */
+/*   Updated: 2025/09/26 17:19:21 by maria-ol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/**
+ * @brief Main entry point for the push_swap sorting algorithm.
+ *
+ * Parses and validates command-line arguments, creates the initial stack A,
+ * and prepares for the sorting algorithm implementation. Currently handles
+ * argument processing and memory management setup. Future implementation
+ * will include sorting algorithm and stack operations.
+ *
+ * @param argc The number of command-line arguments.
+ * @param argv Array of command-line argument strings containing integers.
+ * @return 0 on successful execution, exits with error code on failure.
+ */
 int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;
@@ -22,10 +34,7 @@ int	main(int argc, char **argv)
 	stack_a = ft_parse_args(argc, argv);
 	if (!stack_a)
 		ft_error();
-	// check if stack a is already sorted
 	stack_b = NULL;
-	// Sort both stacks - sort_stacks(&stack_a, &stack_b);
-	// Clean up
 	free_stack(&stack_a);
 	return (0);
 }
