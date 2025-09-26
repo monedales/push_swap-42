@@ -6,7 +6,7 @@
 /*   By: maria-ol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 15:59:41 by maria-ol          #+#    #+#             */
-/*   Updated: 2025/09/25 18:44:35 by maria-ol         ###   ########.fr       */
+/*   Updated: 2025/09/26 16:31:21 by maria-ol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 # include <unistd.h>
 # include "libft/libft.h"
 
-# define INT_MAX 2147483647 
-# define INT_MIN -2147483648
+# define MAX_INT 2147483647 
+# define MIN_INT -2147483648
 
 typedef struct s_stack
 {
@@ -40,6 +40,7 @@ t_stack	*ft_remove_last(t_stack **head);
 void	free_stack(t_stack **stack);
 
 /* parsing & validation */
-
+void	ft_args_validation(int argc, char **argv);
+t_stack	*ft_parse_args(int argc, char **argv);
 
 #endif
