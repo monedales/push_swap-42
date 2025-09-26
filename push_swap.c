@@ -6,7 +6,7 @@
 /*   By: maria-ol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 17:33:10 by mona              #+#    #+#             */
-/*   Updated: 2025/09/26 17:19:21 by maria-ol         ###   ########.fr       */
+/*   Updated: 2025/09/26 19:45:46 by maria-ol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,12 @@ int	main(int argc, char **argv)
 	stack_a = ft_parse_args(argc, argv);
 	if (!stack_a)
 		ft_error();
+	print_stack(stack_a);
+	ft_sa(&stack_a);
+	print_stack(stack_a);
 	stack_b = NULL;
+	print_stack(stack_b);
 	free_stack(&stack_a);
+	free_stack(&stack_b);
 	return (0);
 }
