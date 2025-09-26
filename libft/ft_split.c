@@ -6,7 +6,7 @@
 /*   By: maria-ol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 16:24:16 by maria-ol          #+#    #+#             */
-/*   Updated: 2025/09/25 18:14:12 by maria-ol         ###   ########.fr       */
+/*   Updated: 2025/09/26 16:30:52 by maria-ol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ char	**ft_split(char const *s, char c)
 	size_t	count_w;
 	size_t	start;
 
-	len = count_words(s, c);
+	len = ft_count_words(s, c);
 	arr = ft_calloc(len + 1, sizeof(char *));
 	if (!arr)
 		return (NULL);

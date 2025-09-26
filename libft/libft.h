@@ -6,7 +6,7 @@
 /*   By: maria-ol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 20:13:11 by maria-ol          #+#    #+#             */
-/*   Updated: 2025/09/25 18:15:19 by maria-ol         ###   ########.fr       */
+/*   Updated: 2025/09/26 15:35:55 by maria-ol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 long	ft_atol(const char *str);
 void	ft_error(void);
-size_t	count_words(const char *str, char delimit);
+size_t	ft_count_words(const char *str, char delimit);
 int		ft_isspace(int chr);
 void	ft_free_arr(char **arr, size_t limit);
 
