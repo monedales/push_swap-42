@@ -6,7 +6,7 @@
 /*   By: maria-ol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/26 19:01:10 by maria-ol          #+#    #+#             */
-/*   Updated: 2025/09/26 19:57:28 by maria-ol         ###   ########.fr       */
+/*   Updated: 2025/09/26 20:22:48 by maria-ol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	ft_sa(t_stack **stack_a)
 		temp->next->prev = temp;
 	(*stack_a)->prev = NULL;
 	temp->prev = *stack_a;
-	ft_printf("sa");
+	ft_printf("sa\n");
 }
 
 void	ft_sb(t_stack **stack_b)
@@ -43,5 +43,18 @@ void	ft_sb(t_stack **stack_b)
 		temp->next->prev = temp;
 	(*stack_b)->prev = NULL;
 	temp->prev = *stack_b;
-	ft_printf("sb");
+	ft_printf("sb\n");
+}
+
+void	ft_pb(t_stack **stack_a, t_stack **stack_b)
+{
+	t_stack	*temp;
+
+	if (!stack_a || !*stack_a)
+		return ;
+	temp = *stack_b;
+	*stack_b = *stack_a;
+	*stack_a = (*stack_a)->next;
+	(*stack_b)->next = temp;
+	ft_printf("pb\n");
 }

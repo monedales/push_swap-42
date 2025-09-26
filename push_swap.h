@@ -6,7 +6,7 @@
 /*   By: maria-ol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 15:59:41 by maria-ol          #+#    #+#             */
-/*   Updated: 2025/09/26 19:49:14 by maria-ol         ###   ########.fr       */
+/*   Updated: 2025/09/26 20:21:19 by maria-ol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,12 @@ t_stack	*ft_parse_args(int argc, char **argv);
 
 /* operations - swap */
 void	ft_sa(t_stack **stack_a);
-void	ft_sb(t_stack *stack_b);
-// void	ft_ss(t_stack *stack_a, t_stack *stack_b);
+void	ft_sb(t_stack **stack_b);
+// void	ft_ss(t_stack **stack_a, t_stack **stack_b);
 
 /* operations - push */
-// void	ft_pa(t_stack *stack_a);
-// void	ft_pb(t_stack *stack_b);
+// void	ft_pa(t_stack **stack_a);
+void	ft_pb(t_stack **stack_a, t_stack **stack_b);
 
 /* operations - rotate */
 

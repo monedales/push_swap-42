@@ -5,7 +5,7 @@ AR = ar rcs
 RM = rm -rf
 INC = -I .
 CP = cp
-SRC = 
+SRC = \
 	ft_utils_doubly_list.c ft_utils_doubly_list2.c push_swap.c ft_free.c \
 	ft_args_validation.c ft_parsing.c operations.c \
 
