@@ -6,11 +6,36 @@
 /*   By: maria-ol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/26 19:01:10 by maria-ol          #+#    #+#             */
-/*   Updated: 2025/09/26 20:33:56 by maria-ol         ###   ########.fr       */
+/*   Updated: 2025/09/29 20:53:59 by maria-ol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+/**
+ * @brief Generic function to swap the first two elements of any stack.
+ *
+ * Swaps the first two nodes in a doubly-linked stack, maintaining proper
+ * forward and backward linkage. Handles edge cases: empty stack, single
+ * element, or null pointers. Used by sa, sb, and ss operations.
+ *
+ * @param stack Pointer to the pointer of the first node in the stack.
+ */
+static void	swap_generic(t_stack **stack)
+{
+	t_stack	*temp;
+
+	if (!stack || !*stack || !(*stack)->next)
+		return ;
+	temp = *stack;
+	*stack = (*stack)->next;
+	temp->next = (*stack)->next;
+	(*stack)->next = temp;
+	if (temp->next)
+		temp->next->prev = temp;
+	(*stack)->prev = NULL;
+	temp->prev = *stack;
+}
 
 /**
  * @brief Swap the first 2 elements at the top of stack A.
@@ -23,18 +48,7 @@
  */
 void	ft_sa(t_stack **stack_a)
 {
-	t_stack	*temp;
-
-	if (!stack_a || !*stack_a || !(*stack_a)->next)
-		return ;
-	temp = *stack_a;
-	*stack_a = (*stack_a)->next;
-	temp->next = (*stack_a)->next;
-	(*stack_a)->next = temp;
-	if (temp->next)
-		temp->next->prev = temp;
-	(*stack_a)->prev = NULL;
-	temp->prev = *stack_a;
+	swap_generic(stack_a);
 	ft_printf("sa\n");
 }
 
@@ -49,19 +63,25 @@ void	ft_sa(t_stack **stack_a)
  */
 void	ft_sb(t_stack **stack_b)
 {
-	t_stack	*temp;
-
-	if (!stack_b || !*stack_b || !(*stack_b)->next)
-		return ;
-	temp = *stack_b;
-	*stack_b = (*stack_b)->next;
-	temp->next = (*stack_b)->next;
-	(*stack_b)->next = temp;
-	if (temp->next)
-		temp->next->prev = temp;
-	(*stack_b)->prev = NULL;
-	temp->prev = *stack_b;
+	swap_generic(stack_b);
 	ft_printf("sb\n");
+}
+
+/**
+ * @brief Swap the first 2 elements at the top of both stacks simultaneously.
+ *
+ * Performs sa and sb operations at the same time. Swaps the first two nodes
+ * of both stack A and stack B simultaneously. Does nothing for stacks that
+ * have only one or no elements. Prints "ss" to standard output.
+ *
+ * @param stack_a Pointer to the pointer of the first node in stack A.
+ * @param stack_b Pointer to the pointer of the first node in stack B.
+ */
+void	ft_ss(t_stack **stack_a, t_stack **stack_b)
+{
+	swap_generic(stack_a);
+	swap_generic(stack_b);
+	ft_printf("ss\n");
 }
 
 /**
