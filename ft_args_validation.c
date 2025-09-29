@@ -6,7 +6,7 @@
 /*   By: maria-ol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 12:48:12 by mona              #+#    #+#             */
-/*   Updated: 2025/09/26 17:20:29 by maria-ol         ###   ########.fr       */
+/*   Updated: 2025/09/29 20:31:32 by maria-ol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,20 +119,20 @@ static void	ft_validate_args_array(char **args, int should_free)
  */
 static void	ft_check_mixed_format(int argc, char **argv)
 {
-	int	i;
+	int	idx;
 	int	has_spaces;
 	int	has_single_args;
 
 	has_spaces = 0;
 	has_single_args = 0;
-	i = 1;
-	while (i < argc)
+	idx = 1;
+	while (idx < argc)
 	{
-		if (ft_strchr(argv[i], ' '))
+		if (ft_strchr(argv[idx], ' '))
 			has_spaces = 1;
 		else
 			has_single_args = 1;
-		i++;
+		idx++;
 	}
 	if (has_spaces && has_single_args)
 		ft_error();

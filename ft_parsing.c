@@ -6,7 +6,7 @@
 /*   By: maria-ol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/26 15:45:00 by maria-ol          #+#    #+#             */
-/*   Updated: 2025/09/26 17:19:21 by maria-ol         ###   ########.fr       */
+/*   Updated: 2025/09/29 20:14:59 by maria-ol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,22 +56,22 @@ static t_stack	*ft_create_stack_from_args(char **args, int should_free)
 {
 	t_stack	*stack_a;
 	t_stack	*new_node;
-	int		i;
+	int		idx;
 
 	stack_a = NULL;
-	i = 0;
-	while (args[i])
+	idx = 0;
+	while (args[idx])
 	{
-		new_node = ft_create_node(ft_atoi(args[i]));
+		new_node = ft_create_node(ft_atoi(args[idx]));
 		if (!new_node)
 		{
 			free_stack(&stack_a);
 			if (should_free)
-				ft_free_arr(args, i);
+				ft_free_arr(args, idx);
 			ft_error();
 		}
 		ft_add_last(&stack_a, new_node);
-		i++;
+		idx++;
 	}
 	return (stack_a);
 }
@@ -96,6 +96,7 @@ t_stack	*ft_parse_args(int argc, char **argv)
 	int		word_count;
 
 	ft_args_validation(argc, argv);
+	should_free = 0;
 	args = ft_get_args_array(argc, argv, &should_free);
 	stack_a = ft_create_stack_from_args(args, should_free);
 	if (should_free)
