@@ -6,7 +6,7 @@
 /*   By: maria-ol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 15:59:41 by maria-ol          #+#    #+#             */
-/*   Updated: 2025/09/29 22:23:08 by maria-ol         ###   ########.fr       */
+/*   Updated: 2025/09/30 15:53:00 by maria-ol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	free_stack(t_stack **stack);
 /* parsing & validation */
 void	ft_args_validation(int argc, char **argv);
 t_stack	*ft_parse_args(int argc, char **argv);
+int		ft_is_sorted(t_stack *stack);
 
 /* operations - swap */
 void	ft_sa(t_stack **stack_a);
