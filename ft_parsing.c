@@ -6,11 +6,25 @@
 /*   By: maria-ol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/26 15:45:00 by maria-ol          #+#    #+#             */
-/*   Updated: 2025/09/29 20:14:59 by maria-ol         ###   ########.fr       */
+/*   Updated: 2025/09/30 18:38:12 by maria-ol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static void	ft_assign_index(t_stack	**stack)
+{
+	t_stack	*temp;
+	int		idx;
+
+	temp = stack;
+	idx = 0;
+	while (temp)
+	{
+		
+	}
+	
+}	
 
 /**
  * @brief Extracts arguments array from command-line parameters.
@@ -104,5 +118,6 @@ t_stack	*ft_parse_args(int argc, char **argv)
 		word_count = ft_count_words(argv[1], ' ');
 		ft_free_arr(args, word_count);
 	}
+	//assign array function
 	return (stack_a);
 }
