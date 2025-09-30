@@ -6,7 +6,7 @@
 /*   By: maria-ol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 17:33:10 by mona              #+#    #+#             */
-/*   Updated: 2025/09/29 21:51:41 by maria-ol         ###   ########.fr       */
+/*   Updated: 2025/09/29 22:13:44 by maria-ol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,21 @@ int	main(int argc, char **argv)
 	ft_pa(&stack_a, &stack_b);
 	print_stack(stack_a);
 	print_stack(stack_b);
+
+	/* rotate operations demonstration */
+	ft_pb(&stack_a, &stack_b);  // Move one element to B for rb test
+	ft_pb(&stack_a, &stack_b);  // Move another element to B
+	print_stack(stack_a);
+	print_stack(stack_b);
+	ft_ra(&stack_a);
+	print_stack(stack_a);
+	ft_rb(&stack_b);
+	print_stack(stack_b);
+	ft_rr(&stack_a, &stack_b);  // Rotate both simultaneously
+	print_stack(stack_a);
+	print_stack(stack_b);
+
+	// free the stacks at the end
 	free_stack(&stack_a);
 	free_stack(&stack_b);
 	return (0);
