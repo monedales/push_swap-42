@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operations.c                                       :+:      :+:    :+:   */
+/*   operations-swap.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maria-ol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/26 19:01:10 by maria-ol          #+#    #+#             */
-/*   Updated: 2025/09/29 20:53:59 by maria-ol         ###   ########.fr       */
+/*   Updated: 2025/09/29 21:40:22 by maria-ol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,25 +82,4 @@ void	ft_ss(t_stack **stack_a, t_stack **stack_b)
 	swap_generic(stack_a);
 	swap_generic(stack_b);
 	ft_printf("ss\n");
-}
-
-/**
- * @brief Push the first element from stack A to stack B.
- *
- * Takes the top element from stack A and moves it to the top of stack B.
- * The first element of stack A becomes the first element of stack B.
- * Does nothing if stack A is empty. Prints "pb" to standard output.
- *
- * @param stack_a Pointer to the pointer of the first node in stack A.
- * @param stack_b Pointer to the pointer of the first node in stack B.
- */
-void	ft_pb(t_stack **stack_a, t_stack **stack_b)
-{
-	t_stack	*temp;
-
-	if (!stack_a || !*stack_a)
-		return ;
-	temp = ft_remove_first(stack_a);
-	ft_add_front(stack_b, temp);
-	ft_printf("pb\n");
 }

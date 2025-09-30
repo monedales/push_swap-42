@@ -6,7 +6,7 @@
 /*   By: maria-ol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 17:33:10 by mona              #+#    #+#             */
-/*   Updated: 2025/09/26 20:25:22 by maria-ol         ###   ########.fr       */
+/*   Updated: 2025/09/29 21:51:41 by maria-ol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,16 @@ int	main(int argc, char **argv)
 	print_stack(stack_a);
 	print_stack(stack_b);
 	ft_sb(&stack_b);
+	print_stack(stack_a);
+	print_stack(stack_b);
+	/* push back from B to A */
+	ft_pa(&stack_a, &stack_b);
+	print_stack(stack_a);
+	print_stack(stack_b);
+	ft_pa(&stack_a, &stack_b);
+	print_stack(stack_a);
+	print_stack(stack_b);
+	ft_pa(&stack_a, &stack_b);
 	print_stack(stack_a);
 	print_stack(stack_b);
 	free_stack(&stack_a);

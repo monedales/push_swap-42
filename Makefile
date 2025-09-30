@@ -7,7 +7,7 @@ INC = -I .
 CP = cp
 SRC = \
 	ft_utils_doubly_list.c ft_utils_doubly_list2.c push_swap.c ft_free.c \
-	ft_args_validation.c ft_parsing.c operations.c \
+	ft_args_validation.c ft_parsing.c operations-swap.c operations-push.c\
 
 
 OBJS = $(SRC:.c=.o)
