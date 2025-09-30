@@ -6,7 +6,7 @@
 /*   By: maria-ol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 17:33:10 by mona              #+#    #+#             */
-/*   Updated: 2025/09/29 22:13:44 by maria-ol         ###   ########.fr       */
+/*   Updated: 2025/09/29 22:23:11 by maria-ol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,15 @@ int	main(int argc, char **argv)
 	ft_rb(&stack_b);
 	print_stack(stack_b);
 	ft_rr(&stack_a, &stack_b);  // Rotate both simultaneously
+	print_stack(stack_a);
+	print_stack(stack_b);
+
+	/* reverse rotate operations demonstration */
+	ft_rra(&stack_a);  // Reverse rotate A
+	print_stack(stack_a);
+	ft_rrb(&stack_b);  // Reverse rotate B
+	print_stack(stack_b);
+	ft_rrr(&stack_a, &stack_b);  // Reverse rotate both simultaneously
 	print_stack(stack_a);
 	print_stack(stack_b);
 
