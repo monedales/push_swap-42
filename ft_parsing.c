@@ -3,28 +3,45 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parsing.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maria-ol <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mona <mona@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/26 15:45:00 by maria-ol          #+#    #+#             */
-/*   Updated: 2025/09/30 18:38:12 by maria-ol         ###   ########.fr       */
+/*   Updated: 2025/10/02 17:36:14 by mona             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	ft_assign_index(t_stack	**stack)
+/**
+ * @brief Assigns index values representing sorted positions to stack elements.
+ *
+ * Calculates the sorted position (rank) for each element in the stack.
+ * The smallest element gets index 0, second smallest gets 1, etc.
+ * This indexing is crucial for optimization algorithms like radix sort.
+ *
+ * @param stack Pointer to the pointer of the first node in the stack.
+ */
+static void	ft_assign_index(t_stack **stack)
 {
-	t_stack	*temp;
-	int		idx;
+	t_stack	*current;
+	t_stack	*compare;
+	int		index;
 
-	temp = stack;
-	idx = 0;
-	while (temp)
+	current = *stack;
+	while (current)
 	{
-		
+		index = 0;
+		compare = *stack;
+		while (compare)
+		{
+			if (compare->content < current->content)
+				index++;
+			compare = compare->next;
+		}
+		current->index = index;
+		current = current->next;
 	}
-	
-}	
+}
 
 /**
  * @brief Extracts arguments array from command-line parameters.
@@ -46,7 +63,7 @@ static char	**ft_get_args_array(int argc, char **argv, int *should_free)
 	if (argc == 2)
 	{
 		args = ft_split(argv[1], ' ');
-		if (!args)
+		if (!args || !args[0])
 			ft_error();
 		*should_free = 1;
 	}
@@ -118,6 +135,6 @@ t_stack	*ft_parse_args(int argc, char **argv)
 		word_count = ft_count_words(argv[1], ' ');
 		ft_free_arr(args, word_count);
 	}
-	//assign array function
+	ft_assign_index(&stack_a);
 	return (stack_a);
 }
