@@ -141,10 +141,15 @@ cd debug
 ## Useful Links 🔗
 
 • [Doubly Linked List in C – GeeksforGeeks](https://www.geeksforgeeks.org/c/doubly-linked-list-in-c/)
-• [Sorting Algorithms – GeeksforGeeks](https://www.geeksforgeeks.org/sorting-algorithms/)  
+
+• [Sorting Algorithms – GeeksforGeeks](https://www.geeksforgeeks.org/sorting-algorithms/) 
+
 • [Stack Data Structure – GeeksforGeeks](https://www.geeksforgeeks.org/c/stack-data-structure-in-c/)
+
 • [Algorithm Complexity Analysis – Khan Academy](https://www.khanacademy.org/computing/computer-science/algorithms/asymptotic-notation/a/asymptotic-notation)
+
 • [Push Swap Visualization Tool](https://push-swap-visualizer.vercel.app/)
+
 • [Memory Management in C – Tutorialspoint](https://www.tutorialspoint.com/cprogramming/c_memory_management.htm)
 
 ## License 📜
