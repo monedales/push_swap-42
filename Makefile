@@ -1,48 +1,62 @@
+# Program name
 NAME = push_swap
+
+# Directories
+SRC_DIR = src
+INCLUDE_DIR = includes
+LIBFT_DIR = libft
+OBJ_DIR = obj
+DEBUG_DIR = debug
+
+# Compiler and flags
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -I $(INCLUDE_DIR)
 AR = ar rcs
 RM = rm -rf
-INC = -I .
-CP = cp
 
-OBJ_DIR = obj
-
+# Source files
 SRC = \
 	ft_utils_doubly_list.c ft_utils_doubly_list2.c push_swap.c ft_free.c \
 	ft_args_validation.c ft_parsing.c operations-swap.c operations-push.c \
-	operations-rotate.c operations-reverse.c ft_sorting.c \
+	operations-rotate.c operations-reverse.c ft_sorting.c
 
 OBJS = $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
 
-LIBFT_PATH = libft
-LIBFT = ${LIBFT_PATH}/libft.a
+# Libraries
+LIBFT = $(LIBFT_DIR)/libft.a
 
 all: $(NAME) banner
 
 banner:
 	@echo "WIP"
 
-$(NAME): $(OBJS)
-	${MAKE} -C ${LIBFT_PATH}
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
+$(NAME): $(OBJS) $(LIBFT)
+	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
 
-$(OBJ_DIR)/%.o: %.c
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(OBJ_DIR)
-	$(CC) $(CFLAGS) $(INC) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
 
-.PHONY: all clean fclean re normi banner
+$(LIBFT):
+	@$(MAKE) -C $(LIBFT_DIR)
+
+# Debug target
+debug:
+	@$(MAKE) -C $(DEBUG_DIR)
+
+.PHONY: all clean fclean re normi banner debug
 
 clean:
-	${MAKE} -C ${LIBFT_PATH} clean
-	$(RM) $(OBJ_DIR)
-	$(RM) *.o
+	@$(MAKE) -C $(LIBFT_DIR) clean
+	@$(MAKE) -C $(DEBUG_DIR) clean
+	@$(RM) $(OBJ_DIR)
 
 fclean: clean
-	${MAKE} -C ${LIBFT_PATH} fclean
-	$(RM) $(NAME)
+	@$(MAKE) -C $(LIBFT_DIR) fclean
+	@$(MAKE) -C $(DEBUG_DIR) fclean
+	@$(RM) $(NAME)
 
 re: fclean all
 
 normi:
-		norminette -R CheckForbiddenSourceHeader *.c *.h
+	norminette -R CheckForbiddenSourceHeader *.c *.h
