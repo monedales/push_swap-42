@@ -7,10 +7,30 @@ A sophisticated sorting algorithm implementation using two stacks and a limited 
 The push_swap project challenges you to sort a stack of integers using the minimum number of operations. You have two stacks (A and B) and a set of specific operations to manipulate them. The goal is to sort all numbers in stack A in ascending order using the fewest possible moves.
 
 **Key Challenge:** Different input sizes have strict operation limits:
-• **3 numbers**: Maximum 3 operations
-• **5 numbers**: Maximum 12 operations  
-• **100 numbers**: Less than 700 operations for full points
-• **500 numbers**: Less than 5500 operations for full points
+
+- **3 numbers**: Maximum 3 operations
+
+- **5 numbers**: Maximum 12 operations  
+
+- **100 numbers**: Less than 700 operations for full points
+
+- **500 numbers**: Less than 5500 operations for full points
+
+## Stack Operations Reference 🔧
+
+| Operation | Description | Effect |
+|-----------|-------------|--------|
+| **sa** | swap a | Swap first 2 elements of stack A |
+| **sb** | swap b | Swap first 2 elements of stack B |  
+| **ss** | swap both | Execute sa and sb simultaneously |
+| **pa** | push a | Push top element from B to A |
+| **pb** | push b | Push top element from A to B |
+| **ra** | rotate a | Rotate up (first becomes last) in A |
+| **rb** | rotate b | Rotate up (first becomes last) in B |
+| **rr** | rotate both | Execute ra and rb simultaneously |
+| **rra** | reverse rotate a | Rotate down (last becomes first) in A |
+| **rrb** | reverse rotate b | Rotate down (last becomes first) in B |
+| **rrr** | reverse rotate both | Execute rra and rrb simultaneously |
 
 ## Technologies & Concepts 🛠️
 
@@ -27,6 +47,20 @@ The push_swap project challenges you to sort a stack of integers using the minim
 • **Parsing & Validation**: Robust input handling and error management
 
 • **Modular Programming**: Clean separation of concerns and reusable functions
+
+## Algorithm Strategy 📊
+
+### Small Numbers (2-5 elements)
+- **2 elements**: Maximum 1 operation (sa if needed)
+- **3 elements**: Maximum 2 operations using conditional logic
+- **4-5 elements**: Use of stack B as auxiliary storage
+
+### Large Numbers (100+ elements) - *In Development*
+- **Turk Algorithm**: Efficient sorting for larger datasets
+- **Chunk-based approach**: Divide and conquer strategy
+- **Cost analysis**: Calculate optimal moves for each element
+- **Performance targets**: Meet strict operation count requirements
+
 
 ## Source Code Structure 📂
 
@@ -65,22 +99,6 @@ The push_swap project challenges you to sort a stack of integers using the minim
 
 • **`debug/Makefile`** - Independent build system for debug tools
 
-## Stack Operations Reference 🔧
-
-| Operation | Description | Effect |
-|-----------|-------------|--------|
-| **sa** | swap a | Swap first 2 elements of stack A |
-| **sb** | swap b | Swap first 2 elements of stack B |  
-| **ss** | swap both | Execute sa and sb simultaneously |
-| **pa** | push a | Push top element from B to A |
-| **pb** | push b | Push top element from A to B |
-| **ra** | rotate a | Rotate up (first becomes last) in A |
-| **rb** | rotate b | Rotate up (first becomes last) in B |
-| **rr** | rotate both | Execute ra and rb simultaneously |
-| **rra** | reverse rotate a | Rotate down (last becomes first) in A |
-| **rrb** | reverse rotate b | Rotate down (last becomes first) in B |
-| **rrr** | reverse rotate both | Execute rra and rrb simultaneously |
-
 ## Instructions ⚙️
 
 ### Building the Project
@@ -117,19 +135,6 @@ cd debug
 • **Remove all generated files**: `make fclean`  
 • **Rebuild from scratch**: `make re`
 • **Check code style**: `make normi`
-
-## Algorithm Strategy 📊
-
-### Small Numbers (2-5 elements)
-- **2 elements**: Maximum 1 operation (sa if needed)
-- **3 elements**: Maximum 2 operations using conditional logic
-- **4-5 elements**: Use of stack B as auxiliary storage
-
-### Large Numbers (100+ elements) - *In Development*
-- **Turk Algorithm**: Efficient sorting for larger datasets
-- **Chunk-based approach**: Divide and conquer strategy
-- **Cost analysis**: Calculate optimal moves for each element
-- **Performance targets**: Meet strict operation count requirements
 
 ## Used Tests 🧪
 
