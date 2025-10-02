@@ -6,11 +6,11 @@
 /*   By: mona <mona@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 15:00:00 by maria-ol          #+#    #+#             */
-/*   Updated: 2025/10/02 17:36:14 by mona             ###   ########.fr       */
+/*   Updated: 2025/10/02 18:45:34 by mona             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 /**
  * @brief Sorts exactly 2 elements in stack A using minimal operations.
@@ -70,7 +70,7 @@ void	ft_sort_three(t_stack **stack_a)
  * @param stack_a Pointer to the pointer of the first node in stack A.
  * @param stack_size Current size of stack A.
  */
-static void	ft_move_min_to_top(t_stack **stack_a, int stack_size)
+void	ft_move_min_to_top(t_stack **stack_a, int stack_size)
 {
 	int	min_pos;
 

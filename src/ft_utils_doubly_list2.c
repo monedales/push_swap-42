@@ -6,11 +6,11 @@
 /*   By: mona <mona@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:22:52 by mona              #+#    #+#             */
-/*   Updated: 2025/10/02 17:36:14 by mona             ###   ########.fr       */
+/*   Updated: 2025/10/02 18:46:19 by mona             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 /**
  * @brief Prints all elements in a doubly linked list stack.
@@ -124,4 +124,36 @@ int	ft_find_min_position(t_stack *stack)
 		current_position++;
 	}
 	return (min_position);
+}
+
+/**
+ * @brief Checks if a stack is sorted in ascending order.
+ *
+ * Traverses the stack from head to tail, comparing each element with 
+ * the next. Returns 1 if the stack is sorted in ascending order,
+ * 0 otherwise. Handles edge cases of NULL or single-element stacks.
+ *
+ * @param stack Pointer to the first node in the stack.
+ * @return 1 if sorted, 0 if not sorted.
+ */
+int	ft_is_sorted(t_stack *stack)
+{
+	int		sort;
+	t_stack	*current;
+
+	current = stack;
+	sort = 0;
+	if (stack == NULL)
+		return (sort);
+	while (current && current->next)
+	{
+		if (current->content > current->next->content)
+		{
+			sort = 0;
+			break ;
+		}
+		current = current->next;
+		sort = 1;
+	}
+	return (sort);
 }

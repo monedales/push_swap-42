@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 /**
  * @brief Frees all nodes in a doubly linked list and sets the head pointer 
  * to NULL.

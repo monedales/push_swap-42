@@ -6,11 +6,11 @@
 /*   By: mona <mona@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/26 15:45:00 by maria-ol          #+#    #+#             */
-/*   Updated: 2025/10/02 17:36:14 by mona             ###   ########.fr       */
+/*   Updated: 2025/10/02 18:27:23 by mona             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 /**
  * @brief Assigns index values representing sorted positions to stack elements.
