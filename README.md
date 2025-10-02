@@ -15,38 +15,54 @@ The push_swap project challenges you to sort a stack of integers using the minim
 ## Technologies & Concepts 🛠️
 
 • **Data Structures**: Doubly linked lists for stack implementation
+
 • **Algorithm Design**: Sorting algorithms optimized for specific constraints
+
 • **Stack Operations**: Push, pop, swap, rotate operations
+
 • **Memory Management**: Dynamic allocation and proper cleanup
+
 • **Performance Optimization**: Minimizing operation count for different input sizes
+
 • **Parsing & Validation**: Robust input handling and error management
+
 • **Modular Programming**: Clean separation of concerns and reusable functions
 
 ## Source Code Structure 📂
 
 ### Core Implementation
 • **`src/push_swap.c`** - Main program entry point and algorithm coordination
-• **`src/ft_parsing.c`** - Command-line argument parsing and stack initialization  
+
+• **`src/ft_parsing.c`** - Command-line argument parsing and stack initialization 
+
 • **`src/ft_args_validation.c`** - Input validation (duplicates, integer overflow, format checking)
+
 • **`src/ft_sorting.c`** - Sorting algorithms for different input sizes (2-5 elements optimized)
 
 ### Stack Operations
 • **`src/operations-swap.c`** - Swap operations (sa, sb, ss)
-• **`src/operations-push.c`** - Push operations (pa, pb)  
+
+• **`src/operations-push.c`** - Push operations (pa, pb)
+
 • **`src/operations-rotate.c`** - Rotate operations (ra, rb, rr)
+
 • **`src/operations-reverse.c`** - Reverse rotate operations (rra, rrb, rrr)
 
 ### Utilities & Data Management  
 • **`src/ft_utils_doubly_list.c`** - Doubly linked list creation and manipulation
+
 • **`src/ft_utils_doubly_list2.c`** - Additional list utilities and helper functions
+
 • **`src/ft_free.c`** - Memory cleanup and error handling
 
 ### Headers & Libraries
 • **`includes/push_swap.h`** - Main header with type definitions and function declarations
+
 • **`libft/`** - Extended custom library with printf, string manipulation, and memory functions
 
 ### Debug System
 • **`debug/push_swap_debug.c`** - Visual debugging system with step-by-step algorithm visualization
+
 • **`debug/Makefile`** - Independent build system for debug tools
 
 ## Stack Operations Reference 🔧
@@ -118,9 +134,13 @@ cd debug
 ## Used Tests 🧪
 
 • **Custom test suite**: Comprehensive validation with 42+ test cases
+
 • **Edge case testing**: Empty input, single elements, already sorted arrays
+
 • **Performance testing**: Operation count validation for different input sizes
+
 • **Memory leak detection**: Valgrind integration for memory safety
+
 • **Norminette compliance**: Code style validation
 
 ## Current Status 🚧
