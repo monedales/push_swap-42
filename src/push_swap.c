@@ -12,7 +12,6 @@
 
 #include "../includes/push_swap.h"
 
-
 /**
  * @brief Main entry point for the push_swap sorting algorithm.
  *
