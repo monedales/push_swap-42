@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_utils_doubly_list2.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maria-ol <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mona <mona@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:22:52 by mona              #+#    #+#             */
-/*   Updated: 2025/09/26 17:19:21 by maria-ol         ###   ########.fr       */
+/*   Updated: 2025/10/02 17:36:14 by mona             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,4 +91,37 @@ t_stack	*ft_remove_last(t_stack **head)
 	removed_node->next = NULL;
 	removed_node->prev = NULL;
 	return (removed_node);
+}
+
+/**
+ * @brief Finds the position of the minimum element in the stack.
+ *
+ * Iterates through the stack to find the node with the smallest content value
+ * and returns its position (0-indexed) from the top of the stack.
+ *
+ * @param stack Pointer to the first node in the stack.
+ * @return Position of the minimum element (0-indexed).
+ */
+int	ft_find_min_position(t_stack *stack)
+{
+	int		min_value;
+	int		min_position;
+	int		current_position;
+
+	if (!stack)
+		return (-1);
+	min_value = stack->content;
+	min_position = 0;
+	current_position = 0;
+	while (stack)
+	{
+		if (stack->content < min_value)
+		{
+			min_value = stack->content;
+			min_position = current_position;
+		}
+		stack = stack->next;
+		current_position++;
+	}
+	return (min_position);
 }
