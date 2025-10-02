@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maria-ol <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mona <mona@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 15:59:41 by maria-ol          #+#    #+#             */
-/*   Updated: 2025/09/30 15:53:00 by maria-ol         ###   ########.fr       */
+/*   Updated: 2025/10/02 17:36:14 by mona             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,19 @@ void	print_stack(t_stack *head);
 t_stack	*ft_remove_first(t_stack **head);
 t_stack	*ft_remove_last(t_stack **head);
 void	free_stack(t_stack **stack);
+int		ft_find_min_position(t_stack *stack);
 // void	clean_args(char **args, int should_free, int word_count);
 
 /* parsing & validation */
 void	ft_args_validation(int argc, char **argv);
 t_stack	*ft_parse_args(int argc, char **argv);
 int		ft_is_sorted(t_stack *stack);
+
+/* sorting algorithms */
+void	ft_sort_two(t_stack **stack_a);
+void	ft_sort_three(t_stack **stack_a);
+void	ft_sort_small(t_stack **stack_a, t_stack **stack_b);
+void	ft_push_swap(t_stack **stack_a, t_stack **stack_b);
 
 /* operations - swap */
 void	ft_sa(t_stack **stack_a);
