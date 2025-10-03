@@ -6,7 +6,7 @@
 /*   By: mona <mona@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 21:00:00 by mona              #+#    #+#             */
-/*   Updated: 2025/10/03 16:03:46 by mona             ###   ########.fr       */
+/*   Updated: 2025/10/03 16:46:29 by mona             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,4 +127,40 @@ int	ft_calc_total(t_stack *stack_a, t_stack *stack_b, t_stack *element)
 	cost_a = ft_calc_ra(stack_a, element);
 	cost_b = ft_calc_rb(stack_b, element);
 	return (cost_a + cost_b);
+}
+
+/**
+ * @brief Find the element with the lowest cost to move from A to B.
+ *
+ * Iterates through all elements in stack A, calculates the total cost
+ * for each element using ft_calc_total, and returns the element with
+ * the minimum cost. Includes debug output for study purposes.
+ *
+ * @param stack_a Pointer to the first node of stack A.
+ * @param stack_b Pointer to the first node of stack B.
+ * @return Pointer to the cheapest element, or NULL if stack A is empty.
+ */
+t_stack	*ft_cheapest_element(t_stack *stack_a, t_stack *stack_b)
+{
+	t_stack	*current;
+	t_stack	*cheapest;
+	int		current_cost;
+	int		min_cost;
+
+	if (!stack_a)
+		return (NULL);
+	cheapest = stack_a;
+	min_cost = ft_calc_total(stack_a, stack_b, stack_a);
+	current = stack_a->next;
+	while (current)
+	{
+		current_cost = ft_calc_total(stack_a, stack_b, current);
+		if (current_cost < min_cost)
+		{
+			min_cost = current_cost;
+			cheapest = current;
+		}
+		current = current->next;
+	}
+	return (cheapest);
 }

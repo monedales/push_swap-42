@@ -6,7 +6,7 @@
 /*   By: mona <mona@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 15:59:41 by maria-ol          #+#    #+#             */
-/*   Updated: 2025/10/03 16:26:45 by mona             ###   ########.fr       */
+/*   Updated: 2025/10/03 16:35:09 by mona             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void	ft_move_min_to_top(t_stack **stack_a, int stack_size);
 int		ft_calc_ra(t_stack *stack_a, t_stack *target);
 int		ft_calc_rb(t_stack *stack_b, t_stack *element);
 int		ft_calc_total(t_stack *stack_a, t_stack *stack_b, t_stack *element);
+t_stack	*ft_cheapest_element(t_stack *stack_a, t_stack *stack_b);
 
 /* operations - swap */
 void	ft_sa(t_stack **stack_a);
