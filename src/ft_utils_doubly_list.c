@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_utils_doubly_list.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maria-ol <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mona <mona@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 16:09:52 by maria-ol          #+#    #+#             */
-/*   Updated: 2025/09/25 18:48:05 by maria-ol         ###   ########.fr       */
+/*   Updated: 2025/10/03 18:21:04 by mona             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ t_stack	*ft_create_node(int content)
 	if (!new_node)
 		return (NULL);
 	new_node->content = content;
+	new_node->index = 0;
 	new_node->next = NULL;
 	new_node->prev = NULL;
 	return (new_node);

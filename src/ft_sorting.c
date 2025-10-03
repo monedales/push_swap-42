@@ -6,7 +6,7 @@
 /*   By: mona <mona@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 15:00:00 by maria-ol          #+#    #+#             */
-/*   Updated: 2025/10/02 18:45:34 by mona             ###   ########.fr       */
+/*   Updated: 2025/10/03 17:18:35 by mona             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,5 +138,5 @@ void	ft_push_swap(t_stack **stack_a, t_stack **stack_b)
 	else if (stack_size <= 5)
 		ft_sort_small(stack_a, stack_b);
 	else
-		ft_printf("Large stack sorting not yet implemented\n");
+		ft_turk_algorithm(stack_a, stack_b);
 }
