@@ -6,7 +6,7 @@
 /*   By: mona <mona@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 18:00:00 by mona              #+#    #+#             */
-/*   Updated: 2025/10/02 18:58:26 by mona             ###   ########.fr       */
+/*   Updated: 2025/10/03 16:27:40 by mona             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -207,6 +207,41 @@ void	ft_push_swap_debug(t_stack **stack_a, t_stack **stack_b)
 /**
  * @brief Main function for debug version.
  */
+/**
+ * @brief Test cost calculation functions with current stacks.
+ */
+void	ft_test_cost_functions(t_stack **stack_a, t_stack **stack_b)
+{
+	t_stack	*current;
+	int		position;
+	int		ra_cost;
+	int		rb_cost;
+	int		total_cost;
+
+	ft_printf("\n=== COST FUNCTION TESTING ===\n");
+	ft_printf("Stack A size: %d\n", (int)ft_list_size(*stack_a));
+	ft_printf("Stack B size: %d\n", (int)ft_list_size(*stack_b));
+	current = *stack_a;
+	position = 0;
+	
+	while (current)
+	{
+		ra_cost = ft_calc_ra(*stack_a, current);
+		rb_cost = ft_calc_rb(*stack_b, current);
+		total_cost = ft_calc_total(*stack_a, *stack_b, current);
+		
+		ft_printf("Element %d (pos %d, idx %d): ra_cost=%d, rb_cost=%d, total=%d\n",
+			current->content, position, current->index, ra_cost, rb_cost, total_cost);
+		
+		current = current->next;
+		position++;
+	}
+	ft_printf("=== END COST TESTING ===\n\n");
+}
+
+/**
+ * @brief Main debug entry point.
+ */
 int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;
@@ -227,6 +262,7 @@ int	main(int argc, char **argv)
 	ft_printf("✅ INPUT PARSED SUCCESSFULLY\n");
 	stack_b = NULL;
 	
+	ft_test_cost_functions(&stack_a, &stack_b);
 	ft_push_swap_debug(&stack_a, &stack_b);
 	
 	ft_printf("\n🧹 CLEANUP...\n");

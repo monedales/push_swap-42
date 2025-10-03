@@ -1,15 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: mona <mona@student.42.fr>                  +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/10/02 20:30:00 by mona              #+#    #+#              #
-#    Updated: 2025/10/02 18:58:22 by mona             ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 # Debug program name
 NAME		= push_swap_debug
 
@@ -24,7 +12,7 @@ DEBUG_SRCS	= push_swap_debug.c
 SRC_SRCS	= ft_utils_doubly_list.c ft_utils_doubly_list2.c ft_free.c \
 			  ft_args_validation.c ft_parsing.c operations-swap.c \
 			  operations-push.c operations-rotate.c operations-reverse.c \
-			  ft_sorting.c
+			  ft_sorting.c ft_costs.c
 
 # Object files
 DEBUG_OBJS	= $(DEBUG_SRCS:%.c=$(OBJ_DIR)/%.o)

@@ -6,7 +6,7 @@
 /*   By: mona <mona@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 15:59:41 by maria-ol          #+#    #+#             */
-/*   Updated: 2025/10/02 18:58:13 by mona             ###   ########.fr       */
+/*   Updated: 2025/10/03 16:26:45 by mona             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ t_stack	*ft_remove_first(t_stack **head);
 t_stack	*ft_remove_last(t_stack **head);
 void	free_stack(t_stack **stack);
 int		ft_find_min_position(t_stack *stack);
-// void	clean_args(char **args, int should_free, int word_count);
 
 /* parsing & validation */
 void	ft_args_validation(int argc, char **argv);
@@ -52,6 +51,11 @@ void	ft_sort_three(t_stack **stack_a);
 void	ft_sort_small(t_stack **stack_a, t_stack **stack_b);
 void	ft_push_swap(t_stack **stack_a, t_stack **stack_b);
 void	ft_move_min_to_top(t_stack **stack_a, int stack_size);
+
+/* cost calculation */
+int		ft_calc_ra(t_stack *stack_a, t_stack *target);
+int		ft_calc_rb(t_stack *stack_b, t_stack *element);
+int		ft_calc_total(t_stack *stack_a, t_stack *stack_b, t_stack *element);
 
 /* operations - swap */
 void	ft_sa(t_stack **stack_a);
