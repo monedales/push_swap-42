@@ -94,22 +94,12 @@ The push_swap project challenges you to sort a stack of integers using the minim
 
 • **`libft/`** - Extended custom library with printf, string manipulation, and memory functions
 
-### Debug System
-• **`debug/push_swap_debug.c`** - Visual debugging system with step-by-step algorithm visualization
-
-• **`debug/Makefile`** - Independent build system for debug tools
-
 ## Instructions ⚙️
 
 ### Building the Project
 • Run `make` to compile the main push_swap executable
 ```bash
 make
-```
-
-• To build the debug version with visual output:
-```bash
-make debug
 ```
 
 ### Running the Program
@@ -123,39 +113,28 @@ make debug
 ./push_swap "4 67 3 87 23"
 ```
 
-### Debug & Visualization
-• **Visual debugging**: See step-by-step algorithm execution
-```bash
-cd debug
-./push_swap_debug 5 4 3 2 1
-```
-
 ### Development Commands
 • **Clean object files**: `make clean`
-• **Remove all generated files**: `make fclean`  
+
+• **Remove all generated files**: `make fclean`
+
 • **Rebuild from scratch**: `make re`
+
 • **Check code style**: `make normi`
 
 ## Used Tests 🧪
 
-• **Custom test suite**: Comprehensive validation with 42+ test cases
+• [Push Swap Tester](https://github.com/laisarena/push_swap_tester)
 
-• **Edge case testing**: Empty input, single elements, already sorted arrays
-
-• **Performance testing**: Operation count validation for different input sizes
-
-• **Memory leak detection**: Valgrind integration for memory safety
-
-• **Norminette compliance**: Code style validation
+• [Push Swap Visualizer](https://push-swap42-visualizer.vercel.app/)
 
 ## Current Status 🚧
 
-**✅ Completed:**
+**Completed:**
 - Small number sorting algorithms (2-5 elements) 
 - All stack operations implemented and tested
 - Robust input parsing and validation
 - Memory management and error handling
-- Debug visualization system
 - Project structure organization
 
 **🔄 In Progress:**
