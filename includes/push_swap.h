@@ -6,7 +6,7 @@
 /*   By: mona <mona@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 15:59:41 by maria-ol          #+#    #+#             */
-/*   Updated: 2025/10/03 16:35:09 by mona             ###   ########.fr       */
+/*   Updated: 2025/10/03 18:21:04 by mona             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,22 @@ void	ft_move_min_to_top(t_stack **stack_a, int stack_size);
 /* cost calculation */
 int		ft_calc_ra(t_stack *stack_a, t_stack *target);
 int		ft_calc_rb(t_stack *stack_b, t_stack *element);
+int		ft_calc_ra_for_b(t_stack *stack_a, t_stack *element);
 int		ft_calc_total(t_stack *stack_a, t_stack *stack_b, t_stack *element);
+int		ft_should_rotate_up_a(t_stack *stack_a, t_stack *target);
+int		ft_should_rotate_up_b(t_stack *stack_b, t_stack *element);
 t_stack	*ft_cheapest_element(t_stack *stack_a, t_stack *stack_b);
+
+/* turk algorithm movements */
+void	ft_best_move(t_stack **stack_a, t_stack **stack_b, t_stack *target);
+void	ft_turk_algorithm(t_stack **stack_a, t_stack **stack_b);
+void	ft_rotate_a_to_top(t_stack **stack_a, t_stack *target);
+void	ft_rotate_b_to_pos(t_stack **stack_b, t_stack *element);
+
+/* chunk algorithm helpers */
+int		ft_get_chunk_size(int stack_size);
+int		ft_in_chunk(t_stack *element, int chunk_min, int chunk_max);
+t_stack	*ft_find_chunk_element(t_stack *stack_a, int chunk_min, int chunk_max);
 
 /* operations - swap */
 void	ft_sa(t_stack **stack_a);
