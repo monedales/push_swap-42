@@ -6,7 +6,7 @@
 /*   By: maria-ol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 19:40:00 by maria-ol          #+#    #+#             */
-/*   Updated: 2025/10/06 19:40:00 by maria-ol         ###   ########.fr       */
+/*   Updated: 2025/10/06 20:19:59 by maria-ol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,16 @@
 void	ft_combined_rotations(t_stack **stack_a, t_stack **stack_b,
 			int rotate_up, int min_cost)
 {
-	while (min_cost-- > 0)
+	int	i;
+
+	i = 0;
+	while (i < min_cost)
 	{
 		if (rotate_up)
 			ft_rr(stack_a, stack_b);
 		else
 			ft_rrr(stack_a, stack_b);
+		i++;
 	}
 }
 
@@ -42,12 +46,16 @@ void	ft_combined_rotations(t_stack **stack_a, t_stack **stack_b,
 void	ft_individual_rotations_a(t_stack **stack_a, int cost_a,
 			int rotate_up_a)
 {
-	while (cost_a-- > 0)
+	int	i;
+
+	i = 0;
+	while (i < cost_a)
 	{
 		if (rotate_up_a)
 			ft_ra(stack_a);
 		else
 			ft_rra(stack_a);
+		i++;
 	}
 }
 
@@ -61,12 +69,16 @@ void	ft_individual_rotations_a(t_stack **stack_a, int cost_a,
 void	ft_individual_rotations_b(t_stack **stack_b, int cost_b,
 			int rotate_up_b)
 {
-	while (cost_b-- > 0)
+	int	i;
+
+	i = 0;
+	while (i < cost_b)
 	{
 		if (rotate_up_b)
 			ft_rb(stack_b);
 		else
 			ft_rrb(stack_b);
+		i++;
 	}
 }
 

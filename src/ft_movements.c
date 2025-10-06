@@ -6,7 +6,7 @@
 /*   By: maria-ol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 17:00:00 by mona              #+#    #+#             */
-/*   Updated: 2025/10/06 19:32:44 by maria-ol         ###   ########.fr       */
+/*   Updated: 2025/10/06 20:19:59 by maria-ol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,18 @@ void	ft_rotate_a_to_top(t_stack **stack_a, t_stack *target)
 {
 	int	cost;
 	int	rotate_up;
+	int	i;
 
 	cost = ft_efficient_rotation_cost(*stack_a, target);
 	rotate_up = ft_should_rotate_up(*stack_a, target);
-	while (cost-- > 0)
+	i = 0;
+	while (i < cost)
 	{
 		if (rotate_up)
 			ft_ra(stack_a);
 		else
 			ft_rra(stack_a);
+		i++;
 	}
 }
 
@@ -47,17 +50,20 @@ void	ft_rotate_b_to_pos(t_stack **stack_b, t_stack *element)
 {
 	int	cost;
 	int	rotate_up;
+	int	i;
 
 	if (!*stack_b)
 		return ;
 	cost = ft_calc_rb(*stack_b, element);
 	rotate_up = ft_should_rotate_up_b(*stack_b, element);
-	while (cost-- > 0)
+	i = 0;
+	while (i < cost)
 	{
 		if (rotate_up)
 			ft_rb(stack_b);
 		else
 			ft_rrb(stack_b);
+		i++;
 	}
 }
 
