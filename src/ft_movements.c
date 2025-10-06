@@ -111,10 +111,11 @@ void	ft_best_move(t_stack **stack_a, t_stack **stack_b, t_stack *target)
 }
 
 /**
- * @brief Execute optimal move from B to A.
+ * @brief Execute optimal move from B to A with combined rotations.
  *
- * Rotates stack B to bring the element to the top, rotates stack A 
- * to prepare the correct insertion position, then pushes from B to A.
+ * Calculates rotation costs for both stacks, uses combined operations
+ * (rr/rrr) when both rotate in same direction to reduce total operations,
+ * then performs remaining individual rotations before pushing from B to A.
  *
  * @param stack_a Pointer to stack A pointer.
  * @param stack_b Pointer to stack B pointer.
@@ -124,11 +125,27 @@ void	ft_best_move_b_to_a(t_stack **stack_a, t_stack **stack_b,
 			t_stack *element)
 {
 	t_stack	*target_a;
+	int		cost_a;
+	int		cost_b;
+	int		rotate_up_a;
+	int		rotate_up_b;
+	int		min_cost;
 
 	if (!element)
 		return ;
 	target_a = ft_find_target_in_a(*stack_a, element->index);
-	ft_rotate_b_to_top(stack_b, element);
-	ft_rotate_a_to_top(stack_a, target_a);
+	cost_a = ft_efficient_rotation_cost(*stack_a, target_a);
+	cost_b = ft_efficient_rotation_cost(*stack_b, element);
+	rotate_up_a = ft_should_rotate_up(*stack_a, target_a);
+	rotate_up_b = ft_should_rotate_up(*stack_b, element);
+	if (rotate_up_a == rotate_up_b)
+	{
+		min_cost = (cost_a < cost_b) ? cost_a : cost_b;
+		ft_combined_rotations(stack_a, stack_b, rotate_up_a, min_cost);
+		cost_a -= min_cost;
+		cost_b -= min_cost;
+	}
+	ft_individual_rotations_a(stack_a, cost_a, rotate_up_a);
+	ft_individual_rotations_b(stack_b, cost_b, rotate_up_b);
 	ft_pa(stack_a, stack_b);
 }
