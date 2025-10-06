@@ -143,6 +143,6 @@ void	ft_push_swap(t_stack **stack_a, t_stack **stack_b)
 	else if (stack_size <= 5)
 		ft_sort_small(stack_a, stack_b);
 	else
-		// ft_turk_algorithm(stack_a, stack_b);
-		ft_printf("\nnot implemented in main branch!\n");
+		ft_turk_algorithm(stack_a, stack_b);
 }
+

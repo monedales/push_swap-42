@@ -81,8 +81,4 @@ t_stack	*ft_find_chunk_element(t_stack *stack_a, int chunk_min, int chunk_max)
 		current = current->next;
 	}
 	return (best);
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> feature/turk-algorithm-fixed
