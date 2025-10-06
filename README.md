@@ -131,9 +131,9 @@ make
 ## Current Status 🚧
 
 **Completed:**
-- Small number sorting algorithms (2-5 elements) 
+- Small number sorting algorithms (2-5 elements)
 - All stack operations implemented and tested
-- Robust input parsing and validation
+- Input parsing and validation
 - Memory management and error handling
 - Project structure organization
 
