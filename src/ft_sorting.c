@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_sorting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mona <mona@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: maria-ol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 15:00:00 by maria-ol          #+#    #+#             */
-/*   Updated: 2025/10/03 17:18:35 by mona             ###   ########.fr       */
+/*   Updated: 2025/10/06 16:20:14 by maria-ol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,12 @@
  */
 void	ft_sort_two(t_stack **stack_a)
 {
-	if ((*stack_a)->content > (*stack_a)->next->content)
+	int	first;
+	int	second;
+
+	first = (*stack_a)->content;
+	second = (*stack_a)->next->content;
+	if (first > second)
 		ft_sa(stack_a);
 }
 
@@ -138,5 +143,6 @@ void	ft_push_swap(t_stack **stack_a, t_stack **stack_b)
 	else if (stack_size <= 5)
 		ft_sort_small(stack_a, stack_b);
 	else
-		ft_turk_algorithm(stack_a, stack_b);
+		// ft_turk_algorithm(stack_a, stack_b);
+		ft_printf("\nnot implemented in main branch!\n");
 }
