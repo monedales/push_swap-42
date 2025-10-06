@@ -101,6 +101,8 @@ void	ft_individual_rotations_a(t_stack **stack_a, int cost_a,
 			int rotate_up_a);
 void	ft_individual_rotations_b(t_stack **stack_b, int cost_b,
 			int rotate_up_b);
+void	ft_apply_combined_rotations(t_stack **stack_a, t_stack **stack_b,
+			int costs[3]);
 
 /* operations - rotate */
 void	ft_ra(t_stack **stack_a);

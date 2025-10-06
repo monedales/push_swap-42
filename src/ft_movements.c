@@ -6,7 +6,7 @@
 /*   By: maria-ol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 17:00:00 by mona              #+#    #+#             */
-/*   Updated: 2025/10/06 18:21:48 by maria-ol         ###   ########.fr       */
+/*   Updated: 2025/10/06 19:32:44 by maria-ol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,27 +125,19 @@ void	ft_best_move_b_to_a(t_stack **stack_a, t_stack **stack_b,
 			t_stack *element)
 {
 	t_stack	*target_a;
-	int		cost_a;
-	int		cost_b;
-	int		rotate_up_a;
+	int		costs[3];
 	int		rotate_up_b;
-	int		min_cost;
 
 	if (!element)
 		return ;
 	target_a = ft_find_target_in_a(*stack_a, element->index);
-	cost_a = ft_efficient_rotation_cost(*stack_a, target_a);
-	cost_b = ft_efficient_rotation_cost(*stack_b, element);
-	rotate_up_a = ft_should_rotate_up(*stack_a, target_a);
+	costs[0] = ft_efficient_rotation_cost(*stack_a, target_a);
+	costs[1] = ft_efficient_rotation_cost(*stack_b, element);
+	costs[2] = ft_should_rotate_up(*stack_a, target_a);
 	rotate_up_b = ft_should_rotate_up(*stack_b, element);
-	if (rotate_up_a == rotate_up_b)
-	{
-		min_cost = (cost_a < cost_b) ? cost_a : cost_b;
-		ft_combined_rotations(stack_a, stack_b, rotate_up_a, min_cost);
-		cost_a -= min_cost;
-		cost_b -= min_cost;
-	}
-	ft_individual_rotations_a(stack_a, cost_a, rotate_up_a);
-	ft_individual_rotations_b(stack_b, cost_b, rotate_up_b);
+	if (costs[2] == rotate_up_b)
+		ft_apply_combined_rotations(stack_a, stack_b, costs);
+	ft_individual_rotations_a(stack_a, costs[0], costs[2]);
+	ft_individual_rotations_b(stack_b, costs[1], rotate_up_b);
 	ft_pa(stack_a, stack_b);
 }
