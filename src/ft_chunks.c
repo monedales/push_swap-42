@@ -12,8 +12,6 @@
 
 #include "../includes/push_swap.h"
 
-//NEED TO REVIEW AND PERHAPS IMPROVE
-
 /**
  * @brief Calculate optimal chunk size based on stack size.
  *
@@ -83,4 +81,8 @@ t_stack	*ft_find_chunk_element(t_stack *stack_a, int chunk_min, int chunk_max)
 		current = current->next;
 	}
 	return (best);
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> feature/turk-algorithm-fixed
