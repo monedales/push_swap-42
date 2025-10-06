@@ -6,7 +6,7 @@
 /*   By: mona <mona@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 17:33:10 by mona              #+#    #+#             */
-/*   Updated: 2025/10/03 18:00:28 by mona             ###   ########.fr       */
+/*   Updated: 2025/10/03 21:36:24 by mona             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,12 @@ int	main(int argc, char **argv)
 	stack_a = ft_parse_args(argc, argv);
 	if (!stack_a)
 		ft_error();
+	ft_printf("Initial stack A:\n");
+	print_stack(stack_a);
 	stack_b = NULL;
 	ft_push_swap(&stack_a, &stack_b);
+	ft_printf("Final stack A (should be sorted):\n");
+	print_stack(stack_a);
 	free_stack(&stack_a);
 	free_stack(&stack_b);
 	return (0);

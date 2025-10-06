@@ -16,20 +16,17 @@ RM = rm -rf
 
 # Source files
 SRC = \
-	ft_utils_doubly_list.c ft_utils_doubly_list2.c push_swap.c ft_free.c \
+	ft_utils_doubly_list.c ft_utils_doubly_list2.c ft_utils_position.c push_swap.c ft_free.c \
 	ft_args_validation.c ft_parsing.c operations-swap.c operations-push.c \
 	operations-rotate.c operations-reverse.c ft_sorting.c ft_costs.c ft_costs2.c \
-	ft_movements.c ft_chunks.c ft_algorithm.c
+	ft_costs_b_to_a.c ft_movements.c ft_chunks.c ft_algorithm.c
 
 OBJS = $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
 
 # Libraries
 LIBFT = $(LIBFT_DIR)/libft.a
 
-all: $(NAME) banner
-
-banner:
-	@echo "WIP"
+all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT)
 	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)

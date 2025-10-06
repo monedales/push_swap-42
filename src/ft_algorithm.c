@@ -6,7 +6,7 @@
 /*   By: mona <mona@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 18:35:00 by mona              #+#    #+#             */
-/*   Updated: 2025/10/03 19:34:57 by mona             ###   ########.fr       */
+/*   Updated: 2025/10/03 21:21:12 by mona             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,22 +43,13 @@ static void	ft_push_chunk_to_b(t_stack **stack_a, t_stack **stack_b,
  */
 static void	ft_push_back_to_a(t_stack **stack_a, t_stack **stack_b)
 {
-	t_stack	*best_element;
+	t_stack	*min_element;
 
 	while (*stack_b)
 	{
-		if (!*stack_a)
-		{
-			ft_pa(stack_a, stack_b);
-		}
-		else
-		{
-			best_element = ft_cheapest_element(*stack_a, *stack_b);
-			if (best_element)
-				ft_best_move(stack_a, stack_b, best_element);
-			else
-				ft_pa(stack_a, stack_b);
-		}
+		min_element = ft_find_min_element(*stack_b);
+		ft_rotate_b_to_top(stack_b, min_element);
+		ft_pa(stack_a, stack_b);
 	}
 }
 
@@ -83,7 +74,7 @@ void	ft_turk_algorithm(t_stack **stack_a, t_stack **stack_b)
 	while (ft_list_size(*stack_a) > 3)
 	{
 		chunk_max = chunk_min + chunk_size - 1;
-		if (chunk_max >= stack_size - 1)
+		if (chunk_max >= stack_size - 3)
 			chunk_max = stack_size - 4;
 		if (chunk_min >= stack_size - 3)
 			break ;
