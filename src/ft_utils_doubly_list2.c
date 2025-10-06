@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_utils_doubly_list2.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mona <mona@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: maria-ol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:22:52 by mona              #+#    #+#             */
-/*   Updated: 2025/10/06 14:25:46 by mona             ###   ########.fr       */
+/*   Updated: 2025/10/06 18:21:51 by maria-ol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -209,6 +209,9 @@ t_stack	*ft_find_min_element(t_stack *stack)
 /**
  * @brief Rotate stack B to bring target element to top.
  *
+ * Uses the most efficient rotation direction to bring the specified
+ * element to the top of stack B.
+ *
  * @param stack_b Pointer to stack B pointer.
  * @param target Pointer to target element to bring to top.
  */
@@ -219,8 +222,8 @@ void	ft_rotate_b_to_top(t_stack **stack_b, t_stack *target)
 
 	if (!*stack_b || !target)
 		return ;
-	cost = ft_calc_rb(*stack_b, target);
-	rotate_up = ft_should_rotate_up_b(*stack_b, target);
+	cost = ft_efficient_rotation_cost(*stack_b, target);
+	rotate_up = ft_should_rotate_up(*stack_b, target);
 	while (cost-- > 0)
 	{
 		if (rotate_up)

@@ -6,7 +6,7 @@ SRC_DIR = src
 INCLUDE_DIR = includes
 LIBFT_DIR = libft
 OBJ_DIR = obj
-DEBUG_DIR = debug
+# DEBUG_DIR = debug
 
 # Compiler and flags
 CC = cc
@@ -39,19 +39,19 @@ $(LIBFT):
 	@$(MAKE) -C $(LIBFT_DIR)
 
 # Debug target
-debug:
-	@$(MAKE) -C $(DEBUG_DIR)
+# debug:
+# 	@$(MAKE) -C $(DEBUG_DIR)
 
 .PHONY: all clean fclean re normi banner debug
 
 clean:
 	@$(MAKE) -C $(LIBFT_DIR) clean
-	@$(MAKE) -C $(DEBUG_DIR) clean
+# 	@$(MAKE) -C $(DEBUG_DIR) clean
 	@$(RM) $(OBJ_DIR)
 
 fclean: clean
 	@$(MAKE) -C $(LIBFT_DIR) fclean
-	@$(MAKE) -C $(DEBUG_DIR) fclean
+# 	@$(MAKE) -C $(DEBUG_DIR) fclean
 	@$(RM) $(NAME)
 
 re: fclean all

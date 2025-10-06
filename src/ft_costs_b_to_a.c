@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_costs_b_to_a.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mona <mona@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: maria-ol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 22:00:00 by mona              #+#    #+#             */
-/*   Updated: 2025/10/03 21:36:24 by mona             ###   ########.fr       */
+/*   Updated: 2025/10/06 17:15:51 by maria-ol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,9 @@ t_stack	*ft_find_target_in_a(t_stack *stack_a, int value)
 /**
  * @brief Calculate total cost to move element from B to A.
  *
+ * Calculates the cost to bring the element to the top of B and
+ * prepare the correct insertion position in A.
+ *
  * @param stack_a Stack A.
  * @param stack_b Stack B.
  * @param element Element in B to move.
@@ -61,8 +64,8 @@ int	ft_calc_cost_b_to_a(t_stack *stack_a, t_stack *stack_b, t_stack *element)
 	if (!element)
 		return (0);
 	target_a = ft_find_target_in_a(stack_a, element->index);
-	cost_b = ft_calc_rb(stack_b, element);
-	cost_a = ft_calc_ra(stack_a, target_a);
+	cost_b = ft_efficient_rotation_cost(stack_b, element);
+	cost_a = ft_efficient_rotation_cost(stack_a, target_a);
 	return (cost_a + cost_b);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_movements.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mona <mona@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: maria-ol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 17:00:00 by mona              #+#    #+#             */
-/*   Updated: 2025/10/03 21:36:24 by mona             ###   ########.fr       */
+/*   Updated: 2025/10/06 18:21:48 by maria-ol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 /**
  * @brief Rotate stack A to bring target element to top.
+ *
+ * Uses the most efficient rotation direction to bring the specified
+ * element to the top of stack A.
  *
  * @param stack_a Pointer to stack A pointer.
  * @param target Pointer to element to bring to top.
@@ -23,8 +26,8 @@ void	ft_rotate_a_to_top(t_stack **stack_a, t_stack *target)
 	int	cost;
 	int	rotate_up;
 
-	cost = ft_calc_ra(*stack_a, target);
-	rotate_up = ft_should_rotate_up_a(*stack_a, target);
+	cost = ft_efficient_rotation_cost(*stack_a, target);
+	rotate_up = ft_should_rotate_up(*stack_a, target);
 	while (cost-- > 0)
 	{
 		if (rotate_up)
@@ -110,6 +113,9 @@ void	ft_best_move(t_stack **stack_a, t_stack **stack_b, t_stack *target)
 /**
  * @brief Execute optimal move from B to A.
  *
+ * Rotates stack B to bring the element to the top, rotates stack A 
+ * to prepare the correct insertion position, then pushes from B to A.
+ *
  * @param stack_a Pointer to stack A pointer.
  * @param stack_b Pointer to stack B pointer.
  * @param element Pointer to element to move from B to A.
@@ -122,7 +128,7 @@ void	ft_best_move_b_to_a(t_stack **stack_a, t_stack **stack_b,
 	if (!element)
 		return ;
 	target_a = ft_find_target_in_a(*stack_a, element->index);
-	ft_rotate_b_to_pos(stack_b, element);
+	ft_rotate_b_to_top(stack_b, element);
 	ft_rotate_a_to_top(stack_a, target_a);
 	ft_pa(stack_a, stack_b);
 }
