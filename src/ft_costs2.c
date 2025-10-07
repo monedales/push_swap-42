@@ -6,7 +6,7 @@
 /*   By: maria-ol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 19:00:00 by mona              #+#    #+#             */
-/*   Updated: 2025/10/07 14:20:34 by maria-ol         ###   ########.fr       */
+/*   Updated: 2025/10/07 18:03:13 by maria-ol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,32 +28,6 @@ int	ft_calc_total(t_stack *stack_a, t_stack *stack_b, t_stack *element)
 	ra_cost = ft_calc_ra(stack_a, element);
 	rb_cost = ft_calc_rb(stack_b, element);
 	return (ra_cost + rb_cost);
-}
-
-/**
- * @brief Get position of element in stack (0-indexed from head).
- *
- * @param stack Pointer to stack head.
- * @param target Pointer to target element.
- * @return Position of element, or -1 if not found.
- */
-int	ft_get_position(t_stack *stack, t_stack *target)
-{
-	t_stack	*current;
-	int		position;
-
-	if (!stack || !target)
-		return (-1);
-	current = stack;
-	position = 0;
-	while (current)
-	{
-		if (current == target)
-			return (position);
-		current = current->next;
-		position++;
-	}
-	return (-1);
 }
 
 /**
