@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_costs2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mona <mona@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: maria-ol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 19:00:00 by mona              #+#    #+#             */
-/*   Updated: 2025/10/03 19:12:30 by mona             ###   ########.fr       */
+/*   Updated: 2025/10/07 14:20:34 by maria-ol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,87 +31,71 @@ int	ft_calc_total(t_stack *stack_a, t_stack *stack_b, t_stack *element)
 }
 
 /**
- * @brief Find target position in A for element from B.
+ * @brief Get position of element in stack (0-indexed from head).
  *
- * @param stack_a Stack A.
- * @param element Element to insert.
- * @return Position where element should be inserted.
+ * @param stack Pointer to stack head.
+ * @param target Pointer to target element.
+ * @return Position of element, or -1 if not found.
  */
-static int	ft_find_target_pos_a(t_stack *stack_a, t_stack *element)
+int	ft_get_position(t_stack *stack, t_stack *target)
 {
 	t_stack	*current;
-	t_stack	*best_match;
-	int		pos;
-	int		best_pos;
+	int		position;
 
-	if (!stack_a || !element)
-		return (0);
-	current = stack_a;
-	best_match = NULL;
-	pos = 0;
-	best_pos = 0;
+	if (!stack || !target)
+		return (-1);
+	current = stack;
+	position = 0;
 	while (current)
 	{
-		if (current->index > element->index
-			&& (!best_match || current->index < best_match->index))
-		{
-			best_match = current;
-			best_pos = pos;
-		}
-		pos++;
+		if (current == target)
+			return (position);
 		current = current->next;
+		position++;
 	}
-	return (best_pos);
+	return (-1);
 }
 
 /**
- * @brief Calculate cost to position element in A when pushing from B.
+ * @brief Calculate efficient rotation cost using both directions.
  *
- * @param stack_a Stack A.
- * @param element Element from B to position.
- * @return Cost in operations.
+ * @param stack Pointer to stack head.
+ * @param target Pointer to target element.
+ * @return Minimum cost to bring target to top.
  */
-int	ft_calc_ra_for_b(t_stack *stack_a, t_stack *element)
+int	ft_efficient_rotation_cost(t_stack *stack, t_stack *target)
 {
-	int	target_pos;
+	int	position;
+	int	stack_size;
+	int	cost_up;
+	int	cost_down;
+
+	position = ft_get_position(stack, target);
+	if (position == -1)
+		return (0);
+	stack_size = ft_list_size(stack);
+	cost_up = position;
+	cost_down = stack_size - position;
+	if (cost_up <= cost_down)
+		return (cost_up);
+	return (cost_down);
+}
+
+/**
+ * @brief Check if should rotate up or down efficiently.
+ *
+ * @param stack Pointer to stack head.
+ * @param target Pointer to target element.
+ * @return 1 if rotate up is cheaper, 0 if rotate down is cheaper.
+ */
+int	ft_should_rotate_up(t_stack *stack, t_stack *target)
+{
+	int	position;
 	int	stack_size;
 
-	target_pos = ft_find_target_pos_a(stack_a, element);
-	stack_size = ft_list_size(stack_a);
-	if (target_pos <= stack_size / 2)
-		return (target_pos);
-	else
-		return (stack_size - target_pos);
-}
-
-/**
- * @brief Find cheapest element to move from A to B.
- *
- * @param stack_a Stack A.
- * @param stack_b Stack B.
- * @return Pointer to cheapest element.
- */
-t_stack	*ft_cheapest_element(t_stack *stack_a, t_stack *stack_b)
-{
-	t_stack	*current;
-	t_stack	*cheapest;
-	int		min_cost;
-	int		current_cost;
-
-	if (!stack_a)
-		return (NULL);
-	current = stack_a;
-	cheapest = current;
-	min_cost = ft_calc_total(stack_a, stack_b, current);
-	while (current)
-	{
-		current_cost = ft_calc_total(stack_a, stack_b, current);
-		if (current_cost < min_cost)
-		{
-			min_cost = current_cost;
-			cheapest = current;
-		}
-		current = current->next;
-	}
-	return (cheapest);
+	position = ft_get_position(stack, target);
+	if (position == -1)
+		return (1);
+	stack_size = ft_list_size(stack);
+	return (position <= stack_size / 2);
 }

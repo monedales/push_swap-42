@@ -6,7 +6,7 @@
 /*   By: maria-ol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 15:00:00 by maria-ol          #+#    #+#             */
-/*   Updated: 2025/10/06 16:20:14 by maria-ol         ###   ########.fr       */
+/*   Updated: 2025/10/07 14:24:26 by maria-ol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,6 +143,5 @@ void	ft_push_swap(t_stack **stack_a, t_stack **stack_b)
 	else if (stack_size <= 5)
 		ft_sort_small(stack_a, stack_b);
 	else
-		// ft_turk_algorithm(stack_a, stack_b);
-		ft_printf("\nnot implemented in main branch!\n");
+		ft_turk_algorithm(stack_a, stack_b);
 }

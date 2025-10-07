@@ -6,13 +6,11 @@
 /*   By: maria-ol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 16:27:18 by maria-ol          #+#    #+#             */
-/*   Updated: 2025/10/06 16:27:52 by maria-ol         ###   ########.fr       */
+/*   Updated: 2025/10/06 19:32:44 by maria-ol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-//NEED TO REVIEW AND PERHAPS IMPROVE
 
 /**
  * @brief Calculate optimal chunk size based on stack size.
