@@ -6,7 +6,7 @@
 /*   By: maria-ol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 16:27:18 by maria-ol          #+#    #+#             */
-/*   Updated: 2025/10/07 15:35:18 by maria-ol         ###   ########.fr       */
+/*   Updated: 2025/10/07 17:23:58 by maria-ol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	ft_get_chunk_size(int stack_size)
 	if (stack_size <= 50)
 		return (10);
 	else if (stack_size <= 100)
-		return (25);
+		return (23);
 	else if (stack_size <= 500)
 		return (70);
 	else
