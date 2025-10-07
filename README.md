@@ -52,14 +52,19 @@ The push_swap project challenges you to sort a stack of integers using the minim
 
 ### Small Numbers (2-5 elements)
 - **2 elements**: Maximum 1 operation (sa if needed)
-- **3 elements**: Maximum 2 operations using conditional logic
-- **4-5 elements**: Use of stack B as auxiliary storage
+- **3 elements**: Maximum 2 operations using optimized decision tree
+- **4-5 elements**: Reduction strategy using stack B as auxiliary storage
 
-### Large Numbers (100+ elements) - *In Development*
-- **Turk Algorithm**: Efficient sorting for larger datasets
-- **Chunk-based approach**: Divide and conquer strategy
-- **Cost analysis**: Calculate optimal moves for each element
-- **Performance targets**: Meet strict operation count requirements
+### Large Numbers (100-500 elements) - **Turk Algorithm**
+- **Chunk-based approach**: Optimized chunk sizes for different dataset sizes
+  - 50 elements: chunks of 10
+  - 100 elements: chunks of 25
+  - 500 elements: chunks of 70
+- **Two-phase sorting**:
+  - Phase 1 (A→B): Push elements to stack B in chunks using cost analysis
+  - Phase 2 (B→A): Push back to A in optimal order with combined rotations
+- **Cost optimization**: Calculate cheapest moves considering both rotation directions
+- **Combined operations**: Use rr/rrr when both stacks rotate in same direction
 
 
 ## Source Code Structure 📂
@@ -71,7 +76,9 @@ The push_swap project challenges you to sort a stack of integers using the minim
 
 • **`src/ft_args_validation.c`** - Input validation (duplicates, integer overflow, format checking)
 
-• **`src/ft_sorting.c`** - Sorting algorithms for different input sizes (2-5 elements optimized)
+• **`src/ft_sorting.c`** - Sorting dispatcher and algorithms for 2-5 elements
+
+• **`src/ft_algorithm.c`** - Turk algorithm implementation for large datasets (100-500 elements)
 
 ### Stack Operations
 • **`src/operations-swap.c`** - Swap operations (sa, sb, ss)
@@ -81,6 +88,19 @@ The push_swap project challenges you to sort a stack of integers using the minim
 • **`src/operations-rotate.c`** - Rotate operations (ra, rb, rr)
 
 • **`src/operations-reverse.c`** - Reverse rotate operations (rra, rrb, rrr)
+
+### Turk Algorithm Components
+• **`src/ft_chunks.c`** - Chunk size calculation and element selection
+
+• **`src/ft_costs.c`** - Cost calculation for A→B phase
+
+• **`src/ft_costs2.c`** - Additional cost utilities
+
+• **`src/ft_costs_b_to_a.c`** - Cost calculation for B→A phase with target finding
+
+• **`src/ft_movements.c`** - Movement execution and optimization logic
+
+• **`src/ft_rotation_helpers.c`** - Combined rotation optimization (rr/rrr)
 
 ### Utilities & Data Management  
 • **`src/ft_utils_doubly_list.c`** - Doubly linked list creation and manipulation
@@ -113,6 +133,13 @@ make
 ./push_swap "4 67 3 87 23"
 ```
 
+### Testing 
+• **Use the included test script**: Test with different dataset sizes
+```bash
+bash test.sh 100 200    # Test with 100 numbers, range from 1-200(default it's 100)
+bash test.sh 500 1000     # Test with 500 numbers, range from 1-1000
+```
+
 ### Development Commands
 • **Clean object files**: `make clean`
 
@@ -120,27 +147,22 @@ make
 
 • **Rebuild from scratch**: `make re`
 
-• **Check code style**: `make normi`
+• **Check norminette**: `make normi`
 
 ## Used Tests 🧪
 
-• [Push Swap Tester](https://github.com/laisarena/push_swap_tester)
+• [Push Swap Tester](https://github.com/gemartin99/Push-Swap-Tester)
 
 • [Push Swap Visualizer](https://push-swap42-visualizer.vercel.app/)
 
-## Current Status 🚧
+## Current Status ✅
 
-**Completed:**
-- Small number sorting algorithms (2-5 elements)
-- All stack operations implemented and tested
-- Input parsing and validation
-- Memory management and error handling
-- Project structure organization
+**Project Complete!**
 
-**🔄 In Progress:**
-- Turk Algorithm implementation for large numbers (100-500 elements)
-- Performance optimization and testing
-- Final project validation
+📊 **Performance Results:**
+- **100 numbers**: ~606-695 operations
+- **500 numbers**: ~4873-5073 operations 
+
 
 ## Useful Links 🔗
 
