@@ -6,43 +6,11 @@
 /*   By: maria-ol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 22:00:00 by mona              #+#    #+#             */
-/*   Updated: 2025/10/06 17:15:51 by maria-ol         ###   ########.fr       */
+/*   Updated: 2025/10/07 14:17:21 by maria-ol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-/**
- * @brief Find target element in A for insertion from B.
- *
- * @param stack_a Stack A.
- * @param value Value to find target for.
- * @return Pointer to target element in A.
- */
-t_stack	*ft_find_target_in_a(t_stack *stack_a, int value)
-{
-	t_stack	*current;
-	t_stack	*best_match;
-	t_stack	*min_element;
-
-	if (!stack_a)
-		return (NULL);
-	current = stack_a;
-	best_match = NULL;
-	min_element = stack_a;
-	while (current)
-	{
-		if (current->index < min_element->index)
-			min_element = current;
-		if (current->index > value
-			&& (!best_match || current->index < best_match->index))
-			best_match = current;
-		current = current->next;
-	}
-	if (!best_match)
-		best_match = min_element;
-	return (best_match);
-}
 
 /**
  * @brief Calculate total cost to move element from B to A.
@@ -99,4 +67,28 @@ t_stack	*ft_cheapest_b_to_a(t_stack *stack_a, t_stack *stack_b)
 		current = current->next;
 	}
 	return (cheapest);
+}
+
+/**
+ * @brief Find element with minimum index in stack.
+ *
+ * @param stack Pointer to stack head.
+ * @return Pointer to element with lowest index.
+ */
+t_stack	*ft_find_min_element(t_stack *stack)
+{
+	t_stack	*current;
+	t_stack	*min_element;
+
+	if (!stack)
+		return (NULL);
+	current = stack;
+	min_element = current;
+	while (current)
+	{
+		if (current->index < min_element->index)
+			min_element = current;
+		current = current->next;
+	}
+	return (min_element);
 }

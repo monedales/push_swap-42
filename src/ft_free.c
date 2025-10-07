@@ -6,7 +6,7 @@
 /*   By: maria-ol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 12:10:04 by mona              #+#    #+#             */
-/*   Updated: 2025/09/29 19:21:58 by maria-ol         ###   ########.fr       */
+/*   Updated: 2025/10/07 14:07:19 by maria-ol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,3 @@ void	free_stack(t_stack **stack)
 	}
 	*stack = NULL;
 }
-
-// void	clean_args(char **args, int should_free, int word_count)
-// {
-// 	if (should_free)
-// 		ft_free_arr(args, word_count);
-// }
