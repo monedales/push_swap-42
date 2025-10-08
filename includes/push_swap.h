@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maria-ol <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mona <mona@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 15:59:41 by maria-ol          #+#    #+#             */
-/*   Updated: 2025/10/06 19:50:11 by maria-ol         ###   ########.fr       */
+/*   Updated: 2025/10/08 18:16:53 by mona             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,10 +91,12 @@ t_stack	*ft_find_chunk_element(t_stack *stack_a, int chunk_min, int chunk_max);
 void	ft_sa(t_stack **stack_a);
 void	ft_sb(t_stack **stack_b);
 void	ft_ss(t_stack **stack_a, t_stack **stack_b);
+void	swap_generic(t_stack **stack);
 
 /* operations - push */
 void	ft_pa(t_stack **stack_a, t_stack **stack_b);
 void	ft_pb(t_stack **stack_a, t_stack **stack_b);
+void	push_generic(t_stack **dst, t_stack **src);
 void	ft_combined_rotations(t_stack **stack_a, t_stack **stack_b,
 			int rotate_up, int min_cost);
 void	ft_individual_rotations_a(t_stack **stack_a, int cost_a,
@@ -108,10 +110,28 @@ void	ft_apply_combined_rotations(t_stack **stack_a, t_stack **stack_b,
 void	ft_ra(t_stack **stack_a);
 void	ft_rb(t_stack **stack_b);
 void	ft_rr(t_stack **stack_a, t_stack **stack_b);
+void	rotate_generic(t_stack **stack);
 
 /* operations - reverse rotate */
 void	ft_rra(t_stack **stack_a);
 void	ft_rrb(t_stack **stack_b);
 void	ft_rrr(t_stack **stack_a, t_stack **stack_b);
+void	reverse_generic(t_stack **stack);
+
+/* bonus - checker operations */
+void	ft_sa_silent(t_stack **stack_a);
+void	ft_sb_silent(t_stack **stack_b);
+void	ft_ss_silent(t_stack **stack_a, t_stack **stack_b);
+void	ft_pa_silent(t_stack **stack_a, t_stack **stack_b);
+void	ft_pb_silent(t_stack **stack_a, t_stack **stack_b);
+void	ft_ra_silent(t_stack **stack_a);
+void	ft_rb_silent(t_stack **stack_b);
+void	ft_rr_silent(t_stack **stack_a, t_stack **stack_b);
+void	ft_rra_silent(t_stack **stack_a);
+void	ft_rrb_silent(t_stack **stack_b);
+void	ft_rrr_silent(t_stack **stack_a, t_stack **stack_b);
+
+/* bonus - checker functions */
+void	ft_read_and_execute_operations(t_stack **stack_a, t_stack **stack_b);
 
 #endif
