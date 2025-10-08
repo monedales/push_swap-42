@@ -3,14 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   operations-push.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maria-ol <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mona <mona@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 21:39:50 by maria-ol          #+#    #+#             */
-/*   Updated: 2025/10/06 19:50:11 by maria-ol         ###   ########.fr       */
+/*   Updated: 2025/10/08 18:16:56 by mona             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+/**
+ * @brief Generic function to push from one stack to another.
+ *
+ * Takes the top element from the source stack and moves it to the top of the
+ * destination stack. Maintains proper doubly-linked list integrity. Handles
+ * edge cases: empty source stack or null pointers.
+ *
+ * @param dst Pointer to the pointer of the destination stack.
+ * @param src Pointer to the pointer of the source stack.
+ */
+void	push_generic(t_stack **dst, t_stack **src)
+{
+	t_stack	*temp;
+
+	if (!src || !*src)
+		return ;
+	temp = ft_remove_first(src);
+	ft_add_front(dst, temp);
+}
 
 /**
  * @brief Push the first element from stack A to stack B.

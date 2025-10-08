@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   operations-reverse.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maria-ol <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mona <mona@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 22:17:27 by maria-ol          #+#    #+#             */
-/*   Updated: 2025/09/29 22:23:06 by maria-ol         ###   ########.fr       */
+/*   Updated: 2025/10/08 18:17:06 by mona             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
  *
  * @param stack Pointer to the pointer of the first node in the stack.
  */
-static void	reverse_generic(t_stack **stack)
+void	reverse_generic(t_stack **stack)
 {
 	t_stack	*temp;
 
