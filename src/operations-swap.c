@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   operations-swap.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maria-ol <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mona <mona@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/26 19:01:10 by maria-ol          #+#    #+#             */
-/*   Updated: 2025/09/29 21:40:22 by maria-ol         ###   ########.fr       */
+/*   Updated: 2025/10/08 18:17:04 by mona             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
  *
  * @param stack Pointer to the pointer of the first node in the stack.
  */
-static void	swap_generic(t_stack **stack)
+void	swap_generic(t_stack **stack)
 {
 	t_stack	*temp;
 
