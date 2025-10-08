@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_algorithm.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maria-ol <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mona <mona@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 18:35:00 by mona              #+#    #+#             */
-/*   Updated: 2025/10/06 18:21:30 by maria-ol         ###   ########.fr       */
+/*   Updated: 2025/10/08 15:30:10 by mona             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,9 @@ static void	ft_push_chunk_to_b(t_stack **stack_a, t_stack **stack_b,
 				int chunk_min, int chunk_max)
 {
 	t_stack	*element;
+	int		mid_chunk;
 
+	mid_chunk = chunk_min + (chunk_max - chunk_min) / 2;
 	while (1)
 	{
 		element = ft_find_chunk_element(*stack_a, chunk_min, chunk_max);
@@ -32,6 +34,8 @@ static void	ft_push_chunk_to_b(t_stack **stack_a, t_stack **stack_b,
 			break ;
 		ft_rotate_a_to_top(stack_a, element);
 		ft_pb(stack_a, stack_b);
+		if ((*stack_b)->index < mid_chunk && ft_list_size(*stack_b) > 1)
+			ft_rb(stack_b);
 	}
 }
 
