@@ -23,8 +23,36 @@ if [ "$2" ]; then
     RANGE=$2
 fi
 
+# Auto-detect checker based on OS
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    # macOS
+    CHECKER="./checker_Mac"
+else
+    # Linux
+    CHECKER="./checker_linux"
+fi
+
+# Check if checker exists
+if [ ! -f "$CHECKER" ]; then
+    echo -e "${RED}⚠️  Warning: Checker not found at ${CHECKER}${NC}"
+    echo -e "${YELLOW}Continuing without validation...${NC}"
+    CHECKER=""
+fi
+
 # Generate random numbers
-ARG=$(shuf -i 1-${RANGE} -n ${NUM_COUNT} | tr '\n' ' ')
+# Use gshuf on macOS (brew install coreutils) or fallback to a different method
+if command -v shuf &> /dev/null; then
+    ARG=$(shuf -i 1-${RANGE} -n ${NUM_COUNT} | tr '\n' ' ')
+elif command -v gshuf &> /dev/null; then
+    ARG=$(gshuf -i 1-${RANGE} -n ${NUM_COUNT} | tr '\n' ' ')
+else
+    # Fallback for macOS: generate unique numbers using seq, sort, and head
+    ARG=$(seq 1 ${RANGE} | sort -R | head -n ${NUM_COUNT} | tr '\n' ' ')
+fi
+
+# Create output directory if it doesn't exist
+mkdir -p operations-output
+
 TIMESTAMP=$(date +%Y%m%d_%H%M%S)
 OUTFILE="operations-output/test_${NUM_COUNT}nums_${TIMESTAMP}.txt"
 
@@ -41,17 +69,24 @@ echo ""
 # Count operations
 OPS_COUNT=$(wc -l < "$OUTFILE")
 
-# Check if sorted correctly
-RESULT=$(./push_swap $ARG | ./checker_linux $ARG 2>/dev/null)
+# Check if sorted correctly (only if checker is available)
+if [ -n "$CHECKER" ]; then
+    RESULT=$(./push_swap $ARG | $CHECKER $ARG 2>/dev/null)
+else
+    RESULT="SKIPPED (no checker)"
+fi
 
 # Display results
 echo -e "📁 Saved to: ${BLUE}${OUTFILE}${NC}"
 echo -e "⚙️  Operations used: ${YELLOW}${OPS_COUNT}${NC}"
+echo -e "🖥️  Using checker: ${BLUE}${CHECKER:-none}${NC}"
 
 if [ "$RESULT" = "OK" ]; then
     echo -e "✅ Result: ${GREEN}${RESULT}${NC} - Correctly sorted!"
-else
+elif [ "$RESULT" = "KO" ]; then
     echo -e "❌ Result: ${RED}${RESULT}${NC} - Something went wrong!"
+else
+    echo -e "⚠️  Result: ${YELLOW}${RESULT}${NC}"
 fi
 
 # Performance reference (42 school requirements)
