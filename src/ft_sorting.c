@@ -6,7 +6,7 @@
 /*   By: maria-ol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 15:00:00 by maria-ol          #+#    #+#             */
-/*   Updated: 2025/10/10 16:44:12 by maria-ol         ###   ########.fr       */
+/*   Updated: 2025/10/10 17:14:57 by maria-ol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,17 +83,26 @@ void	ft_sort_three(t_stack **stack_a)
 void	ft_move_min_to_top(t_stack **stack_a, int stack_size)
 {
 	int	min_pos;
+	int	i;
 
 	min_pos = ft_find_min_position(*stack_a);
 	if (min_pos <= stack_size / 2)
 	{
-		while (min_pos-- > 0)
+		i = 0;
+		while (i < min_pos)
+		{
 			ft_ra(stack_a);
+			i++;
+		}
 	}
 	else
 	{
-		while (min_pos++ < stack_size)
+		i = min_pos;
+		while (i < stack_size)
+		{
 			ft_rra(stack_a);
+			i++;
+		}
 	}
 }
 

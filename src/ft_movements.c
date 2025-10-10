@@ -6,17 +6,17 @@
 /*   By: maria-ol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 17:00:00 by mona              #+#    #+#             */
-/*   Updated: 2025/10/07 18:03:19 by maria-ol         ###   ########.fr       */
+/*   Updated: 2025/10/10 18:22:29 by maria-ol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
 /**
- * @brief Rotate stack A to bring target element to top.
+ * @brief Rotate stack A to bring a target element to the top efficiently.
  *
- * Uses the most efficient rotation direction to bring the specified
- * element to the top of stack A.
+ * Chooses the rotation direction that requires fewer operations and
+ * rotates stack A until the target element reaches the top.
  *
  * @param stack_a Pointer to stack A pointer.
  * @param target Pointer to element to bring to top.
@@ -41,15 +41,16 @@ void	ft_rotate_a_to_top(t_stack **stack_a, t_stack *target)
 }
 
 /**
- * @brief Execute optimal move from B to A with combined rotations.
+ * @brief Execute the optimal move from stack B to stack A.
  *
- * Calculates rotation costs for both stacks, uses combined operations
- * (rr/rrr) when both rotate in same direction to reduce total operations,
- * then performs remaining individual rotations before pushing from B to A.
+ * Calculates rotation costs for both stacks and performs the element transfer
+ * efficiently. Uses combined rotations (`rr` / `rrr`) when both stacks rotate
+ * in the same direction to minimize operations, then completes any remaining
+ * individual rotations before pushing the element from B to A.
  *
- * @param stack_a Pointer to stack A pointer.
- * @param stack_b Pointer to stack B pointer.
- * @param element Pointer to element to move from B to A.
+ * @param stack_a Pointer to the head pointer of stack A.
+ * @param stack_b Pointer to the head pointer of stack B.
+ * @param element Pointer to the element in B to move to A.
  */
 void	ft_best_move_b_to_a(t_stack **stack_a, t_stack **stack_b,
 			t_stack *element)
@@ -73,11 +74,15 @@ void	ft_best_move_b_to_a(t_stack **stack_a, t_stack **stack_b,
 }
 
 /**
- * @brief Find target element in A for insertion from B.
+ * @brief Find the appropriate target element in stack A for insertion from B.
  *
- * @param stack_a Stack A.
- * @param value Value to find target for.
- * @return Pointer to target element in A.
+ * Iterates through stack A to locate the element where a given value from
+ * stack B should be inserted to maintain sorted order. If the value is
+ * larger than all elements in A, returns the smallest element (wrap-around).
+ *
+ * @param stack_a Pointer to the head of stack A.
+ * @param value Value from stack B to insert into stack A.
+ * @return Pointer to the target element in stack A for insertion.
  */
 t_stack	*ft_find_target_in_a(t_stack *stack_a, int value)
 {
@@ -105,11 +110,14 @@ t_stack	*ft_find_target_in_a(t_stack *stack_a, int value)
 }
 
 /**
- * @brief Get position of element in stack (0-indexed from head).
+ * @brief Get the 0-indexed position of a target element in a stack.
  *
- * @param stack Pointer to stack head.
- * @param target Pointer to target element.
- * @return Position of element, or -1 if not found.
+ * Iterates through the stack to find the specified target element and
+ * returns its position counting from the head of the stack.
+ *
+ * @param stack Pointer to the head of the stack.
+ * @param target Pointer to the element to find.
+ * @return Position of the element (0-indexed), or -1 if it's not in the stack.
  */
 int	ft_get_position(t_stack *stack, t_stack *target)
 {
@@ -128,4 +136,32 @@ int	ft_get_position(t_stack *stack, t_stack *target)
 		position++;
 	}
 	return (-1);
+}
+
+/**
+ * @brief Find element with minimum index in stack.
+ *
+ * Iterates through the stack to find the element with the lowest index.
+ * Useful for final rotation to place the smallest element at the top.
+ *
+ * @param stack Pointer to the head of the stack.
+ * @return Pointer to the element with the minimum index, 
+ * - or NULL if stack is empty.
+ */
+t_stack	*ft_find_min_element(t_stack *stack)
+{
+	t_stack	*current;
+	t_stack	*min_element;
+
+	if (!stack)
+		return (NULL);
+	current = stack;
+	min_element = current;
+	while (current)
+	{
+		if (current->index < min_element->index)
+			min_element = current;
+		current = current->next;
+	}
+	return (min_element);
 }

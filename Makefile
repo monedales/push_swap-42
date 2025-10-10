@@ -22,8 +22,8 @@ SRC = \
 	ft_utils_doubly_list.c ft_utils_doubly_list2.c ft_sorting.c \
 	push_swap.c ft_free.c ft_rotation_helpers.c ft_algorithm.c \
 	ft_args_validation.c ft_parsing.c operations-swap.c operations-push.c \
-	operations-rotate.c operations-reverse.c ft_costs.c ft_costs2.c \
-	ft_costs_b_to_a.c ft_movements.c ft_chunks.c \
+	operations-rotate.c operations-reverse.c ft_costs.c \
+	ft_movements.c ft_chunks.c \
 
 OBJS = $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
 

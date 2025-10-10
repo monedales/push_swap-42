@@ -3,22 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   ft_algorithm.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mona <mona@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: maria-ol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 18:35:00 by mona              #+#    #+#             */
-/*   Updated: 2025/10/08 15:30:10 by mona             ###   ########.fr       */
+/*   Updated: 2025/10/10 18:02:24 by maria-ol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
 /**
- * @brief Push elements from current chunk to stack B.
+ * @brief Push all elements from the current chunk in stack A to stack B.
  *
- * @param stack_a Pointer to stack A pointer.
- * @param stack_b Pointer to stack B pointer.
- * @param chunk_min Minimum index for current chunk.
- * @param chunk_max Maximum index for current chunk.
+ * Iterates through stack A and moves elements belonging to the current chunk
+ * (between `chunk_min` and `chunk_max`) to stack B. The element closest to 
+ * the top of stack A is moved first to minimize rotations. 
+ * 
+ * Elements in the lower half of the chunk (below `mid_chunk`) are rotated 
+ * within stack B after being pushed, to optimize the order for future moves.
+ *
+ * @param stack_a Pointer to the head pointer of stack A.
+ * @param stack_b Pointer to the head pointer of stack B.
+ * @param chunk_min Minimum index for the current chunk.
+ * @param chunk_max Maximum index for the current chunk.
  */
 static void	ft_push_chunk_to_b(t_stack **stack_a, t_stack **stack_b,
 				int chunk_min, int chunk_max)
@@ -40,13 +47,14 @@ static void	ft_push_chunk_to_b(t_stack **stack_a, t_stack **stack_b,
 }
 
 /**
- * @brief Push all elements back from B to A using cost-based Turk algorithm.
+ * @brief Push all elements back from stack B to stack A.
  *
- * Finds the cheapest element to move from B to A based on rotation costs,
- * then executes the optimal move to place it in the correct position.
+ * Iteratively moves elements from stack B to their correct positions in stack A.
+ * For each element, finds the cheapest move based on combined rotation costs,
+ * then executes the optimal sequence of rotations and push operations.
  *
- * @param stack_a Pointer to stack A pointer.
- * @param stack_b Pointer to stack B pointer.
+ * @param stack_a Pointer to the head pointer of stack A.
+ * @param stack_b Pointer to the head pointer of stack B.
  */
 static void	ft_push_back_to_a(t_stack **stack_a, t_stack **stack_b)
 {
@@ -60,13 +68,18 @@ static void	ft_push_back_to_a(t_stack **stack_a, t_stack **stack_b)
 }
 
 /**
- * @brief Chunk-based Turk Algorithm implementation for large arrays.
+ * @brief Chunk-based Turk algorithm for sorting larger stacks.
  *
- * Pushes elements to B in chunks, sorts remaining 3 in A, pushes back
- * from B to A using cost-based selection, then rotates minimum to top.
+ * Implements a divide-and-conquer strategy:
+ * 1. Divides stack A into chunks and pushes each chunk to B.
+ * 2. Sorts the remaining three elements in stack A.
+ * 3. Pushes all elements back from B to A using cost-based selection.
+ * 4. Rotates stack A to place the smallest element on top.
  *
- * @param stack_a Pointer to stack A pointer.
- * @param stack_b Pointer to stack B pointer.
+ * @param stack_a Pointer to the head pointer of stack A.
+ * @param stack_b Pointer to the head pointer of stack B.
+ * @note Assumes stack size is greater than 5. For smaller stacks,
+ *       simpler sorting functions should be used.
  */
 void	ft_turk_algorithm(t_stack **stack_a, t_stack **stack_b)
 {
