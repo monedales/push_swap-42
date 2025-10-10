@@ -6,7 +6,7 @@
 /*   By: maria-ol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 16:27:18 by maria-ol          #+#    #+#             */
-/*   Updated: 2025/10/10 17:26:43 by maria-ol         ###   ########.fr       */
+/*   Updated: 2025/10/10 19:20:22 by maria-ol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ t_stack	*ft_find_chunk_element(t_stack *stack_a, int chunk_min, int chunk_max)
 	{
 		if (ft_in_chunk(current, chunk_min, chunk_max))
 		{
-			current_cost = ft_calc_ra(stack_a, current);
+			current_cost = ft_efficient_rotation_cost(stack_a, current);
 			if (current_cost < best_cost)
 			{
 				best_cost = current_cost;
