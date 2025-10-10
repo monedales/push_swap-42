@@ -6,7 +6,7 @@
 /*   By: maria-ol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 18:40:00 by maria-ol          #+#    #+#             */
-/*   Updated: 2025/10/07 14:13:07 by maria-ol         ###   ########.fr       */
+/*   Updated: 2025/10/10 18:11:58 by maria-ol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,4 +110,123 @@ void	ft_best_move(t_stack **stack_a, t_stack **stack_b, t_stack *target)
 		return ;
 	ft_optimized_rotations(stack_a, stack_b, target);
 	ft_pa(stack_a, stack_b);
+}
+/**
+ * @brief Calculate total cost to move element from A to B.
+ *
+ * @param stack_a Stack A.
+ * @param stack_b Stack B.
+ * @param element Element to move.
+ * @return Total cost in operations.
+ */
+int	ft_calc_total(t_stack *stack_a, t_stack *stack_b, t_stack *element)
+{
+	int	ra_cost;
+	int	rb_cost;
+
+	ra_cost = ft_calc_ra(stack_a, element);
+	rb_cost = ft_calc_rb(stack_b, element);
+	return (ra_cost + rb_cost);
+}
+/**
+ * @brief Calculate cost to place element in correct position in stack B.
+ *
+ * Determines the number of operations needed to rotate stack B so that
+ * the target position is at the top, ready for insertion.
+ *
+ * @param stack_b Pointer to the first node of stack B.
+ * @param element Pointer to element to place in stack B.
+ * @return Cost in operations to prepare position in stack B.
+ */
+int	ft_calc_rb(t_stack *stack_b, t_stack *element)
+{
+	int	target_position;
+	int	stack_size;
+	int	cost_up;
+	int	cost_down;
+
+	if (!stack_b)
+		return (0);
+	target_position = ft_find_target_pos_b(stack_b, element);
+	stack_size = ft_list_size(stack_b);
+	cost_up = target_position;
+	cost_down = stack_size - target_position;
+	if (cost_up <= cost_down)
+		return (cost_up);
+	return (cost_down);
+}
+/**
+ * @brief Find target position for element in stack B.
+ *
+ * Determines where an element should be placed in stack B to maintain
+ * descending order. Stack B is kept sorted with largest elements on top.
+ *
+ * @param stack_b Pointer to the first node of stack B.
+ * @param element Pointer to element to place in stack B.
+ * @return Position index where element should be inserted.
+ */
+static int	ft_find_target_pos_b(t_stack *stack_b, t_stack *element)
+{
+	t_stack	*current;
+	int		position;
+
+	if (!stack_b)
+		return (0);
+	if (element->index > stack_b->index)
+		return (0);
+	current = stack_b;
+	position = 0;
+	while (current->next)
+	{
+		if (element->index < current->index
+			&& element->index > current->next->index)
+			return (position + 1);
+		position++;
+		current = current->next;
+	}
+	return (position + 1);
+}
+/**
+ * @brief Check if should rotate up (rb) or down (rrb) for stack B positioning.
+ *
+ * @param stack_b Pointer to the first node of stack B.
+ * @param element Pointer to element to place in stack B.
+ * @return 1 if should rotate up (rb), 0 if should rotate down (rrb).
+ */
+int	ft_should_rotate_up_b(t_stack *stack_b, t_stack *element)
+{
+	int	target_position;
+	int	stack_size;
+
+	if (!stack_b)
+		return (1);
+	target_position = ft_find_target_pos_b(stack_b, element);
+	stack_size = ft_list_size(stack_b);
+	return (target_position <= stack_size / 2);
+}
+
+/**
+ * @brief Check if element should rotate up (ra) or down (rra) in stack A.
+ *
+ * @param stack_a Pointer to the first node of stack A.
+ * @param target Pointer to the target element.
+ * @return 1 if should rotate up (ra), 0 if should rotate down (rra).
+ */
+int	ft_should_rotate_up_a(t_stack *stack_a, t_stack *target)
+{
+	t_stack	*current;
+	int		position;
+	int		stack_size;
+
+	if (!stack_a || !target)
+		return (1);
+	position = 0;
+	current = stack_a;
+	while (current && current != target)
+	{
+		position++;
+		current = current->next;
+	}
+	stack_size = ft_list_size(stack_a);
+	return (position <= stack_size / 2);
 }
