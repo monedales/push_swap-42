@@ -6,7 +6,7 @@
 /*   By: maria-ol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 12:48:12 by mona              #+#    #+#             */
-/*   Updated: 2025/09/29 20:31:32 by maria-ol         ###   ########.fr       */
+/*   Updated: 2025/10/10 16:35:51 by maria-ol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,13 @@
 /**
  * @brief Checks if the arguments array contains duplicate numbers.
  *
- * Iterates through the arguments array comparing each number with all 
+ * Iterates through the arguments array, comparing each number with all 
  * subsequent numbers to detect duplicates. Uses ft_atoi() to convert 
  * strings to integers for comparison.
  *
  * @param args Array of string arguments representing numbers.
  * @return 1 if duplicates are found, 0 if all numbers are unique.
+ * @see See also: ft_atoi
  */
 static int	ft_is_doppel(char **args)
 {
@@ -51,6 +52,7 @@ static int	ft_is_doppel(char **args)
  *
  * @param str The string to validate as a number.
  * @return 1 if the string is a valid integer, 0 otherwise.
+ * @see See also: ft_atol, ft_isdigit
  */
 static int	ft_is_valid_number(char *str)
 {
@@ -141,13 +143,19 @@ static void	ft_check_mixed_format(int argc, char **argv)
 /**
  * @brief Main validation function for command-line arguments.
  *
- * Validates push_swap arguments in both formats: single quoted string
- * ("1 2 3 4") or multiple arguments (1 2 3 4). Rejects mixed formats
- * and performs comprehensive validation including duplicate detection,
- * integer range checking, and numeric format verification.
+ * Supports both formats:
+ * - A single quoted string: "1 2 3 4"
+ * - Multiple individual arguments: 1 2 3 4
+ *
+ * Rejects mixed formats and performs full validation, including:
+ * - Duplicate detection
+ * - Integer range checking
+ * - Numeric format verification
  *
  * @param argc The number of command-line arguments.
  * @param argv Array of command-line argument strings.
+ * @see See also: ft_check_mixed_format, ft_validate_args_array,ft_free_arr
+ * @see See also: ft_split, ft_count_words, ft_error
  */
 void	ft_args_validation(int argc, char **argv)
 {

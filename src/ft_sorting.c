@@ -6,17 +6,18 @@
 /*   By: maria-ol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 15:00:00 by maria-ol          #+#    #+#             */
-/*   Updated: 2025/10/07 14:24:26 by maria-ol         ###   ########.fr       */
+/*   Updated: 2025/10/10 16:44:12 by maria-ol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
 /**
- * @brief Sorts exactly 2 elements in stack A using minimal operations.
+ * @brief Sorts exactly two elements in stack A using a single operation.
  *
- * Checks if the first element is greater than the second and swaps them
- * if necessary. This requires at most 1 operation (sa).
+ * Compares the first two elements in stack A and swaps them if the first
+ * is greater than the second. This guarantees the stack is sorted in
+ * ascending order with at most one operation (sa).
  *
  * @param stack_a Pointer to the pointer of the first node in stack A.
  */
@@ -34,10 +35,12 @@ void	ft_sort_two(t_stack **stack_a)
 /**
  * @brief Sorts exactly 3 elements in stack A using minimal operations.
  *
- * Uses optimized conditional logic to sort 3 elements with at most 3 operations.
- * Covers all possible arrangements of 3 numbers to achieve minimal ops.
+ * 	Handles all six possible orderings of three elements, applying the
+ * optimal combination of operations (sa, ra, rra) to achieve a sorted
+ * ascending sequence. Guarantees sorting in at most three operations.
  *
  * @param stack_a Pointer to the pointer of the first node in stack A.
+ * @see See also: ft_sa, ft_ra, ft_rra
  */
 void	ft_sort_three(t_stack **stack_a)
 {
@@ -69,11 +72,13 @@ void	ft_sort_three(t_stack **stack_a)
 /**
  * @brief Moves the minimum element to the top of stack A.
  *
- * Rotates stack A to bring the minimum element to the top position,
- * choosing the most efficient rotation direction.
+ * Finds the position of the smallest element in the stack and rotates
+ * it to the top, choosing the shortest direction (ra or rra) based on
+ * its position relative to the stack size.
  *
  * @param stack_a Pointer to the pointer of the first node in stack A.
  * @param stack_size Current size of stack A.
+ * @see See also: ft_find_min_position, ft_ra, ft_rra
  */
 void	ft_move_min_to_top(t_stack **stack_a, int stack_size)
 {
@@ -95,11 +100,14 @@ void	ft_move_min_to_top(t_stack **stack_a, int stack_size)
 /**
  * @brief Sorts 4 or 5 elements using optimized algorithm.
  *
- * Strategy: Push the smallest elements to stack B, sort the remaining
- * elements in stack A, then push back from B.
+ * Pushes the smallest elements to stack B, sorts the remaining 3 elements
+ * in stack A, and then pushes everything back to stack A in sorted order.
+ * This approach minimizes the number of moves while ensuring correctness.
  *
  * @param stack_a Pointer to the pointer of the first node in stack A.
  * @param stack_b Pointer to the pointer of the first node in stack B.
+ * 
+ * @see See also: ft_move_min_to_top, ft_pb, ft_pa, ft_sort_two, ft_sort_three
  */
 void	ft_sort_small(t_stack **stack_a, t_stack **stack_b)
 {
@@ -121,13 +129,21 @@ void	ft_sort_small(t_stack **stack_a, t_stack **stack_b)
 }
 
 /**
- * @brief Main sorting dispatch function.
+ * @brief Main sorting dispatcher selecting the optimal algorithm.
  *
- * Determines the appropriate sorting algorithm based on the stack size
- * and delegates to the optimal function for each case.
+ * Determines the best sorting routine to use based on the current stack size:
+ * - 2 elements → simple swap
+ * - 3 elements → optimized triple sort
+ * - 4-5 elements → small sort using stack B
+ * - >5 elements → full sorting algorithm (Turk-Chunk algorithm)
+ *
+ * Automatically skips sorting if the stack is already sorted.
  *
  * @param stack_a Pointer to the pointer of the first node in stack A.
  * @param stack_b Pointer to the pointer of the first node in stack B.
+ * 
+ * @see See also: ft_sort_two, ft_sort_three, ft_sort_small
+ * @see See also: ft_turk_algorithm, ft_is_sorted
  */
 void	ft_push_swap(t_stack **stack_a, t_stack **stack_b)
 {

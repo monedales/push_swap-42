@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parsing.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mona <mona@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: maria-ol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/26 15:45:00 by maria-ol          #+#    #+#             */
-/*   Updated: 2025/10/03 17:54:24 by mona             ###   ########.fr       */
+/*   Updated: 2025/10/10 16:27:37 by maria-ol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,12 @@
 /**
  * @brief Assigns index values representing sorted positions to stack elements.
  *
- * Calculates the sorted position (rank) for each element in the stack.
- * The smallest element gets index 0, second smallest gets 1, etc.
- * This indexing is crucial for optimization algorithms like radix sort.
+ * Iterates through the stack and assigns to every node an `index` corresponding 
+ * to its position in the sorted order. The smallest element receives index `0`,
+ * the next smallest `1`, and so on.
  *
  * @param stack Pointer to the pointer of the first node in the stack.
+ * 
  */
 static void	ft_assign_index(t_stack **stack)
 {
@@ -53,7 +54,7 @@ static void	ft_assign_index(t_stack **stack)
  * @param argc The number of command-line arguments.
  * @param argv Array of command-line argument strings.
  * @param should_free Pointer to flag indicating if array should be freed.
- * @return Array of string arguments ready for processing.
+ * @return A NULL-terminated array of numeric strings.
  */
 static char	**ft_get_args_array(int argc, char **argv, int *should_free)
 {
@@ -82,6 +83,8 @@ static char	**ft_get_args_array(int argc, char **argv, int *should_free)
  * @param args Array of string arguments representing numbers.
  * @param should_free Flag indicating if args array should be freed on error.
  * @return Pointer to the head of the created stack.
+ * 
+ * @see See also: ft_create_node(), ft_add_last(), ft_free_arr(), ft_error()
  */
 static t_stack	*ft_create_stack_from_args(char **args, int should_free)
 {
@@ -110,14 +113,18 @@ static t_stack	*ft_create_stack_from_args(char **args, int should_free)
 /**
  * @brief Main parsing function that creates a stack from command-line arguments.
  *
- * Coordinates the full parsing process: validates arguments, extracts them
- * into the proper format, creates the stack, and handles memory cleanup.
- * This function integrates validation and stack creation into a single
- * interface for the main program.
+ * Orchestrates the entire argument handling process:
+ *  - Validates syntax and content of the arguments (`ft_args_validation()`).
+ *  - Extracts the usable array of numbers (`ft_get_args_array()`).
+ *  - Converts arguments to integers and builds the initial stack 
+ * (`ft_create_stack_from_args()`).
+ *  - Assigns indices based on sorted order (`ft_assign_index()`).
  *
  * @param argc The number of command-line arguments.
  * @param argv Array of command-line argument strings.
  * @return Pointer to the head of the created and validated stack.
+ * 
+ * @see See also: ft_args_validation(), ft_assign_index()
  */
 t_stack	*ft_parse_args(int argc, char **argv)
 {
